@@ -1,4 +1,4 @@
-# NearApi [![Build Status](https://github.com/alexfilatov/near_api/workflows/CI/badge.svg?branch=main)](https://github.com/alexfilatov/near_api/actions?query=workflow%3ACI) [![Hex pm](https://img.shields.io/hexpm/v/httpoison.svg?style=flat)](https://hex.pm/packages/near_api) [![hex.pm downloads](https://img.shields.io/hexpm/dt/httpoison.svg?style=flat)](https://hex.pm/packages/httpoison)
+# NearApi [![Build Status](https://github.com/alexfilatov/near_api/workflows/CI/badge.svg?branch=main)](https://github.com/alexfilatov/near_api/actions?query=workflow%3ACI) [![Hex pm](https://img.shields.io/hexpm/v/httpoison.svg?style=flat)](https://hex.pm/packages/near_api) [![hex.pm downloads](https://img.shields.io/hexpm/dt/near_api.svg?style=flat)](https://hex.pm/packages/near_api)
 
 **TODO: Add description**
 
