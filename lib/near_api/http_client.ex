@@ -15,6 +15,7 @@ defmodule NearApi.HttpClient do
 
   def api_call(payload) do
     params_encoded = NearApi.HttpClient.params("query", payload) |> Jason.encode!()
+
     case NearApi.HttpClient.post("/", params_encoded) do
       {:ok, response} -> response.body
       error -> error

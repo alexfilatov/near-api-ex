@@ -7,14 +7,31 @@ defmodule NearApi.MixProject do
       version: "0.1.0",
       elixir: "~> 1.13",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      package: package(),
+      description: description()
     ]
   end
 
   # Run "mix help compile.app" to learn about applications.
   def application do
+    []
+  end
+
+  defp description do
+    """
+    An Elixir library for DApps development on the NEAR blockchain platform
+    """
+  end
+
+  defp package do
     [
-      extra_applications: [:logger]
+      maintainers: ["Alex Filatov"],
+      licenses: ["MIT"],
+      links: %{
+        "GitHub" => "https://github.com/alexfilatov/near_api",
+        "Docs" => "https://hexdocs.pm/near_api"
+      }
     ]
   end
 
