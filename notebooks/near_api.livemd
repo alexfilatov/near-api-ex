@@ -1,0 +1,37 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NEAR API
+
+## Setup
+
+```elixir
+System.put_env("NEAR_PUBLIC_KEY", "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW")
+System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
+```
+
+```output
+:ok
+```
+
+```elixir
+NearApi.view_access_key("client.chainlink.testnet")
+```
+
+```output
+%{
+  "id" => "dontcare",
+  "jsonrpc" => "2.0",
+  "result" => %{
+    "block_hash" => "2nfpT9PMBDuPMDBoGxEfhXBZZkP8TUTCV9geXnzsF7Z7",
+    "block_height" => 76245940,
+    "nonce" => 155,
+    "permission" => %{
+      "FunctionCall" => %{
+        "allowance" => "18085462490572368900000000",
+        "method_names" => ["get_token_price"],
+        "receiver_id" => "client.chainlink.testnet"
+      }
+    }
+  }
+}
+```
