@@ -42,7 +42,8 @@ defmodule NearApi.MixProject do
       {:jason, "~> 1.2"},
       {:b58, "~> 1.0.2"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.1", only: [:dev], runtime: false}
+      {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
+      {:ex_doc, ">= 0.0.0", only: :dev, runtime: false}
     ]
   end
 end
