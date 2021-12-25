@@ -35,34 +35,50 @@ end
 
 ### Access Keys (In Progress)
 
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">NEAR API Docs: Access Keys</a>
+
 Retrieve information about an account's access keys.
 
 ### Accounts / Contracts (Backlog)
+
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
 
 View details about accounts and contracts as well as perform contract
 calls.
 
 ### Block / Chunk (Backlog)
 
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
+
 Query the network and get details about specific blocks or chunks.
 
 ### Gas (Backlog)
+
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
 
 Get gas price for a specific block or hash.
 
 ### Protocol (Backlog)
 
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
+
 Retrieve current genesis and protocol configuration.
 
 ### Network (Backlog)
+
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/network">NEAR API Docs: Network</a>
 
 Return status information for nodes and validators.
 
 ### Transactions (Backlog)
 
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/transactions">NEAR API Docs: Transactions</a>
+
 Send transactions and query their status.
 
 ### Sandbox (Backlog)
+
+<a target="_blank" href="https://docs.near.org/docs/api/rpc/sandbox">NEAR API Docs: Sandbox</a>
 
 Patch state on a local sandbox node.
 
