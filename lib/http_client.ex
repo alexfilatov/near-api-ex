@@ -23,7 +23,7 @@ defmodule NearApi.HttpClient do
   end
 
   @doc """
-  Wraps payload into
+  Wraps payload into the NEAR query structure
   """
   def params(method, payload) do
     %{
