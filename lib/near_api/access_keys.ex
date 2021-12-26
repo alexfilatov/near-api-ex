@@ -8,9 +8,9 @@ defmodule NearApi.AccessKeys do
   @doc """
   Returns information about a single access key for given account from NEAR blockchain
   """
-  @spec view_access_key(account_id :: string) ::
+  @spec view_access_key(account_id :: String.t()) ::
           {:ok, body :: map}
-          | {:error, error_message: error_message :: string, response: response :: map}
+          | {:error, error_message: error_message :: String.t(), response: response :: map}
   def view_access_key(account_id) do
     payload = %{
       request_type: "view_access_key",
@@ -23,7 +23,7 @@ defmodule NearApi.AccessKeys do
       %{"result" => %{"error" => error_message}} = response ->
         {:error, response: response, error_message: error_message}
 
-      %{"error" => %{"name" => error_name}} = response ->
+      %{"error" => _error} = response ->
         Errors.render_error(response)
 
       body ->

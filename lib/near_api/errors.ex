@@ -6,12 +6,12 @@ defmodule NearApi.Errors do
   @spec render_error(error_response :: map) ::
           {:error,
            %{
-             error_message: error_message :: string,
-             error_name: error_name :: string,
+             error_message: error_message :: String.t(),
+             error_name: error_name :: String.t(),
              error_code: error_code :: integer,
-             error_description: error_description :: string,
-             response: response :: string
-           } :: map}
+             error_description: error_description :: String.t(),
+             response: response :: String.t()
+           }}
   def render_error(
         %{
           "error" => %{
