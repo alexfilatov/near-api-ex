@@ -30,4 +30,27 @@ defmodule NearApi.AccessKeys do
         {:ok, body}
     end
   end
+
+  @spec view_access_key_list(account_id :: String.t()) ::
+          {:ok, body :: map}
+          | {:error, error_message: error_message :: String.t(), response: response :: map}
+  def view_access_key_list(account_id) do
+    payload = %{
+      request_type: "view_access_key_list",
+      finality: "final",
+      account_id: account_id,
+      public_key: public_key()
+    }
+
+    case NearApi.HttpClient.api_call(payload) do
+      %{"result" => %{"error" => error_message}} = response ->
+        {:error, response: response, error_message: error_message}
+
+      %{"error" => _error} = response ->
+        Errors.render_error(response)
+
+      body ->
+        {:ok, body}
+    end
+  end
 end
