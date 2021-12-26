@@ -55,23 +55,4 @@ defmodule NearApi.AccessKeysTest do
       refute body["result"]["error"]
     end
   end
-
-  describe ".view_access_key_list" do
-    test "success: returns all access keys for a given account" do
-      {:ok, body} = API.view_access_key_list("client.chainlink.testnet")
-      assert body["id"] == "dontcare"
-      assert body["jsonrpc"] == "2.0"
-      assert is_list(body["result"]["keys"])
-
-      a_key = List.first(body["result"]["keys"])
-      assert Map.has_key?(a_key, "public_key")
-      assert Map.has_key?(a_key, "access_key")
-
-      access_key = a_key["access_key"]
-      assert Map.has_key?(access_key, "nonce")
-      assert Map.has_key?(access_key, "permission")
-
-      refute body["result"]["error"]
-    end
-  end
 end
