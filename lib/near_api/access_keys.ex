@@ -19,16 +19,7 @@ defmodule NearApi.AccessKeys do
       public_key: public_key()
     }
 
-    case NearApi.HttpClient.api_call(payload) do
-      %{"result" => %{"error" => error_message}} = response ->
-        {:error, response: response, error_message: error_message}
-
-      %{"error" => _error} = response ->
-        Errors.render_error(response)
-
-      body ->
-        {:ok, body}
-    end
+    api_call(payload)
   end
 
   @spec view_access_key_list(account_id :: String.t()) ::
@@ -42,6 +33,10 @@ defmodule NearApi.AccessKeys do
       public_key: public_key()
     }
 
+    api_call(payload)
+  end
+
+  defp api_call(payload) do
     case NearApi.HttpClient.api_call(payload) do
       %{"result" => %{"error" => error_message}} = response ->
         {:error, response: response, error_message: error_message}
