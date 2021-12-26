@@ -20,7 +20,8 @@ defmodule NearApi.AccessKeysTest do
     end
 
     test "error: returns access key of an account" do
-      {:error, response: response, error_message: error_message} = API.view_access_key("client.chainlink22.testnet")
+      {:error, response: response, error_message: error_message} =
+        API.view_access_key("client.chainlink22.testnet")
 
       assert response["id"] == "dontcare"
       assert response["result"]["error"]
