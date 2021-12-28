@@ -8,8 +8,7 @@ production*
 -   [Installation](#installation)
 -   [Usage](#usage)
     -   [Access Keys](#access-keys)
-    -   [Accounts / Contracts
-        (Backlog)](#accounts-contracts-backlog)
+    -   [Accounts / Contracts (In Progress)](#accounts--contracts-in-progress)
     -   [Block / Chunk (Backlog)](#block-chunk-backlog)
     -   [Gas (Backlog)](#gas-backlog)
     -   [Protocol (Backlog)](#protocol-backlog)
@@ -44,7 +43,7 @@ Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">N
 
 [Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api_access_keys.livemd)
 
-### Accounts / Contracts (Backlog)
+### Accounts / Contracts (In Progress)
 
 View details about accounts and contracts as well as perform contract
 calls.
