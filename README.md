@@ -8,8 +8,7 @@ production*
 -   [Installation](#installation)
 -   [Usage](#usage)
     -   [Access Keys](#access-keys)
-    -   [Accounts / Contracts
-        (Backlog)](#accounts-contracts-backlog)
+    -   [Accounts / Contracts (Backlog)](#accounts-contracts-backlog)
     -   [Block / Chunk (Backlog)](#block-chunk-backlog)
     -   [Gas (Backlog)](#gas-backlog)
     -   [Protocol (Backlog)](#protocol-backlog)

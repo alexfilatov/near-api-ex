@@ -37,7 +37,7 @@ defmodule NearApi.AccessKeys do
     api_call(payload)
   end
 
-  defp combine_payload(request_type, account_id, block_id, public_key) when is_nil(block_id) do
+  defp combine_payload(request_type, account_id, nil, public_key) do
     %{
       request_type: request_type,
       finality: "final",
