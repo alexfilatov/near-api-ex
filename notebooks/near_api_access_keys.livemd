@@ -1,0 +1,204 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.AccessKeys
+
+## Setup
+
+```elixir
+System.put_env("NEAR_PUBLIC_KEY", "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW")
+System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
+```
+
+```output
+:ok
+```
+
+## NearApi.AccessKeys.view_access_key/3
+
+Returns information about a single access key for given account.
+
+If `permission` of the key is `FunctionCall`, it will return more details such as the `allowance`, `receiver_id`, and `method_names`.
+
+<!-- livebook:{"break_markdown":true} -->
+
+Parameters are `account_id`, `block_id`. 
+When `block_id` is `nil` - we API returns information about latest block of the account according to `finality` parameter
+
+<!-- livebook:{"break_markdown":true} -->
+
+#### Success
+
+<!-- livebook:{"reevaluate_automatically":true} -->
+
+```elixir
+NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "8z8S2zaBJAgMX5q8qhXWoZ2qgWD1RdFfFw4cZzN8iWJn",
+     "block_height" => 76720444,
+     "nonce" => 157,
+     "permission" => %{
+       "FunctionCall" => %{
+         "allowance" => "18074888454317128100000000",
+         "method_names" => ["get_token_price"],
+         "receiver_id" => "client.chainlink.testnet"
+       }
+     }
+   }
+ }}
+```
+
+When we specify `block_id` API returns access key for given block
+
+```elixir
+NearApi.AccessKeys.view_access_key(
+  "client.chainlink.testnet",
+  "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
+)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5",
+     "block_height" => 68795818,
+     "nonce" => 139,
+     "permission" => %{
+       "FunctionCall" => %{
+         "allowance" => "17989377927208900227148640",
+         "method_names" => ["get_token_price"],
+         "receiver_id" => "client.chainlink.testnet"
+       }
+     }
+   }
+ }}
+```
+
+#### Errors
+
+<!-- livebook:{"break_markdown":true} -->
+
+When `account_id` is invalid API returns error struct `REQUEST_VALIDATION_ERROR`, where `response` contains raw response from the NEAR platform.
+
+Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong format, etc.)
+
+<!-- livebook:{"reevaluate_automatically":true} -->
+
+```elixir
+NearApi.AccessKeys.view_access_key("client.chainlink__.testnet")
+```
+
+```output
+{:error,
+ %{
+   error_code: -32700,
+   error_description: "Failed parsing args: [client.chainlink__.testnet]: the value has invalid characters for account ID",
+   error_message: "Parse error",
+   error_name: "REQUEST_VALIDATION_ERROR",
+   response: %{
+     "error" => %{
+       "cause" => %{
+         "info" => %{
+           "error_message" => "Failed parsing args: [client.chainlink__.testnet]: the value has invalid characters for account ID"
+         },
+         "name" => "PARSE_ERROR"
+       },
+       "code" => -32700,
+       "data" => "Failed parsing args: [client.chainlink__.testnet]: the value has invalid characters for account ID",
+       "message" => "Parse error",
+       "name" => "REQUEST_VALIDATION_ERROR"
+     },
+     "id" => "dontcare",
+     "jsonrpc" => "2.0"
+   }
+ }}
+```
+
+When `account_id` is valid but the you're using a key without permissions to this account, you'll get an `:error` struct with simple `error_message` and raw response in `response` field. (Note - NEAR platform returns a `success` reponse in this case but I wrapped this one as an error anyway)
+
+```elixir
+NearApi.AccessKeys.view_access_key("client.chainlink404.testnet")
+```
+
+```output
+{:error,
+ [
+   response: %{
+     "id" => "dontcare",
+     "jsonrpc" => "2.0",
+     "result" => %{
+       "block_hash" => "8z8S2zaBJAgMX5q8qhXWoZ2qgWD1RdFfFw4cZzN8iWJn",
+       "block_height" => 76720444,
+       "error" => "access key ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW does not exist while viewing",
+       "logs" => []
+     }
+   },
+   error_message: "access key ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW does not exist while viewing"
+ ]}
+```
+
+## NearApi.AccessKeys.view_access_key_list/3
+
+Returns all access keys for a given account.
+
+```elixir
+NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "8z8S2zaBJAgMX5q8qhXWoZ2qgWD1RdFfFw4cZzN8iWJn",
+     "block_height" => 76720444,
+     "nonce" => 157,
+     "permission" => %{
+       "FunctionCall" => %{
+         "allowance" => "18074888454317128100000000",
+         "method_names" => ["get_token_price"],
+         "receiver_id" => "client.chainlink.testnet"
+       }
+     }
+   }
+ }}
+```
+
+When we specify `block_id`:
+
+```elixir
+NearApi.AccessKeys.view_access_key(
+  "client.chainlink.testnet",
+  "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
+)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5",
+     "block_height" => 68795818,
+     "nonce" => 139,
+     "permission" => %{
+       "FunctionCall" => %{
+         "allowance" => "17989377927208900227148640",
+         "method_names" => ["get_token_price"],
+         "receiver_id" => "client.chainlink.testnet"
+       }
+     }
+   }
+ }}
+```

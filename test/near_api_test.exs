@@ -7,8 +7,8 @@ defmodule NearApiTest do
 
   describe "NearApi" do
     test "AccessKeys: module contains delegated functions", %{functions: functions} do
-      refute functions -- [view_access_key: 1] == functions
-      refute functions -- [view_access_key_list: 1] == functions
+      refute functions -- [view_access_key: 3] == functions
+      refute functions -- [view_access_key_list: 3] == functions
     end
   end
 end
