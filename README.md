@@ -7,7 +7,7 @@ production*
 
 -   [Installation](#installation)
 -   [Usage](#usage)
-    -   [Access Keys (In Progress)](#access-keys-in-progress)
+    -   [Access Keys](#access-keys)
     -   [Accounts / Contracts
         (Backlog)](#accounts-contracts-backlog)
     -   [Block / Chunk (Backlog)](#block-chunk-backlog)
@@ -33,54 +33,68 @@ end
 
 ## Usage
 
-### Access Keys (In Progress)
+We used [Livebook](https://github.com/livebook-dev/livebook) for API documentation.
+To see NEAR API in action please clone this repository and [run Livebook locally from your project folder](https://github.com/livebook-dev/livebook#escript) with corresponding `.livemd` file loaded. 
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">NEAR API Docs: Access Keys</a>
+### Access Keys
 
 Retrieve information about an account's access keys.
 
-### Accounts / Contracts (Backlog)
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">NEAR API Docs: Access Keys</a>
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
+[Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api_access_keys.livemd)
+
+### Accounts / Contracts (Backlog)
 
 View details about accounts and contracts as well as perform contract
 calls.
 
-### Block / Chunk (Backlog)
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
+### Block / Chunk (Backlog)
 
 Query the network and get details about specific blocks or chunks.
 
-### Gas (Backlog)
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
+### Gas (Backlog)
 
 Get gas price for a specific block or hash.
 
-### Protocol (Backlog)
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
+### Protocol (Backlog)
 
 Retrieve current genesis and protocol configuration.
 
-### Network (Backlog)
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/network">NEAR API Docs: Network</a>
+### Network (Backlog)
 
 Return status information for nodes and validators.
 
-### Transactions (Backlog)
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/network">NEAR API Docs: Network</a>
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/transactions">NEAR API Docs: Transactions</a>
+### Transactions (Backlog)
 
 Send transactions and query their status.
 
-### Sandbox (Backlog)
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/transactions">NEAR API Docs: Transactions</a>
 
-<a target="_blank" href="https://docs.near.org/docs/api/rpc/sandbox">NEAR API Docs: Sandbox</a>
+### Sandbox (Backlog)
 
 Patch state on a local sandbox node.
 
---- 
+Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/sandbox">NEAR API Docs: Sandbox</a>
+
+
+## Contributing
+
+Bug reports and pull requests are welcome on GitHub at https://github.com/alexfilatov/near_api.
+
+1. Fork
+2. Create Pull request
+
+---
+
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc) and published on [HexDocs](https://hexdocs.pm). Once published, the docs can be found at <https://hexdocs.pm/near_api>.
