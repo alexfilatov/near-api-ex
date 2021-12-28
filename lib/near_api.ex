@@ -10,4 +10,6 @@ defmodule NearApi do
     to: NearApi.AccessKeys
 
   defdelegate view_account(account_id, block_id \\ nil), to: NearApi.Accounts
+
+  defdelegate account_changes(account_id, block_id \\ nil), to: NearApi.Accounts
 end

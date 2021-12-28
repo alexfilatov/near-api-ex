@@ -1,4 +1,4 @@
-defmodule NearApi.AccountsContractsTest do
+defmodule NearApi.AccountsTest do
   use ExUnit.Case
   alias NearApi.Accounts, as: API
 
@@ -23,6 +23,27 @@ defmodule NearApi.AccountsContractsTest do
     end
 
     test "success: view_account with block_id" do
+      block_id = "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
+      {:ok, body} = API.view_account("client.chainlink.testnet", block_id)
+      assert body["id"] == "dontcare"
+      assert body["jsonrpc"] == "2.0"
+      assert body["result"]["block_hash"] == block_id
+      refute body["result"]["error"]
+    end
+  end
+
+  describe ".account_changes (experimental)" do
+    test "success: account_changes with finality: final" do
+      {:ok, body} = API.account_changes(["client.chainlink.testnet"])
+      assert body["id"] == "dontcare"
+      assert body["jsonrpc"] == "2.0"
+      assert body["result"]["block_hash"]
+      assert is_list(body["result"]["changes"])
+
+      refute body["result"]["error"]
+    end
+
+    test "success: account_changes with block_id" do
       block_id = "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
       {:ok, body} = API.view_account("client.chainlink.testnet", block_id)
       assert body["id"] == "dontcare"

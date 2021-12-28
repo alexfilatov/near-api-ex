@@ -1,6 +1,14 @@
 defmodule NearApi.HttpClient do
   use HTTPoison.Base
 
+  def api_call(payload) do
+    perform_call("query", payload)
+  end
+
+  def api_call_experimental(payload, method) do
+    perform_call(method, payload)
+  end
+
   def process_request_url(url) do
     endpoint_url() <> url
   end
@@ -13,15 +21,6 @@ defmodule NearApi.HttpClient do
     headers ++ ["Content-Type": "application/json"]
   end
 
-  def api_call(payload) do
-    params_encoded = NearApi.HttpClient.params("query", payload) |> Jason.encode!()
-
-    case NearApi.HttpClient.post("/", params_encoded) do
-      {:ok, response} -> response.body
-      error -> error
-    end
-  end
-
   @doc """
   Wraps payload into the NEAR query structure
   """
@@ -32,6 +31,15 @@ defmodule NearApi.HttpClient do
       method: method,
       params: payload
     }
+  end
+
+  defp perform_call(method, payload) do
+    params_encoded = NearApi.HttpClient.params(method, payload) |> Jason.encode!()
+
+    case NearApi.HttpClient.post("/", params_encoded) do
+      {:ok, response} -> response.body
+      error -> error
+    end
   end
 
   defp endpoint_url do

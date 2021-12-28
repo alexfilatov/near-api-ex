@@ -13,6 +13,7 @@ defmodule NearApiTest do
 
     test "Accounts: module contains delegated functions", %{functions: functions} do
       refute functions -- [view_account: 2] == functions
+      refute functions -- [account_changes: 2] == functions
     end
   end
 end
