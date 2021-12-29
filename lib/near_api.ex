@@ -23,6 +23,8 @@ defmodule NearApi do
   defdelegate data_changes(account_ids, block_id \\ nil, key_prefix_base64 \\ nil),
     to: NearApi.Contracts
 
-  defdelegate contract_code_changes(account_ids, block_id \\ nil, key_prefix_base64 \\ nil),
+  defdelegate contract_code_changes(account_ids, block_id \\ nil), to: NearApi.Contracts
+
+  defdelegate call_function(account_id, method_name, args_base64, block_id \\ nil),
     to: NearApi.Contracts
 end

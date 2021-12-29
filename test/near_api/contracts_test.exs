@@ -126,4 +126,15 @@ defmodule NearApi.ContractsTest do
       end
     end
   end
+
+  describe ".call_function" do
+    test "error: call_function for non-existent function" do
+      use_cassette "call_function/error_function_not_found" do
+        method_name = "hello_world"
+        args_base64 = "test"
+        {:error, error} = API.call_function("yellowpie.testnet", method_name, args_base64)
+        assert String.match?(error.response["result"]["error"], ~r/MethodNotFound/)
+      end
+    end
+  end
 end

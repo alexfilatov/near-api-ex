@@ -29,10 +29,11 @@ defmodule NearApi.Utils do
     System.get_env("NEAR_PUBLIC_KEY")
   end
 
+  # SOFT_ERROR - this is our error type when API weirdly returns you status_code: 200 but this is an error message
   defp process_api_response(response) do
     case response do
       %{"result" => %{"error" => error_message}} = response ->
-        {:error, response: response, error_message: error_message}
+        {:error, %{response: response, error_message: error_message, error_type: "SOFT_ERROR"}}
 
       %{"error" => _error} = response ->
         Errors.render_error(response)
