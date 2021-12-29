@@ -4,7 +4,6 @@ defmodule NearApi.AccountsTest do
   alias NearApi.Accounts, as: API
 
   setup do
-    System.put_env("NEAR_PUBLIC_KEY", "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW")
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
     ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes/accounts")
   end
