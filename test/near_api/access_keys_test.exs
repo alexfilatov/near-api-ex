@@ -36,7 +36,7 @@ defmodule NearApi.AccessKeysTest do
 
     test "error: returns access key of an account" do
       use_cassette "view_access_key/error" do
-        {:error, response: response, error_message: _error_message} =
+        {:error, %{response: response, error_message: _error_message}} =
           API.view_access_key("client.chainlink22.testnet")
 
         assert response["id"] == "dontcare"
@@ -48,7 +48,7 @@ defmodule NearApi.AccessKeysTest do
       use_cassette "view_access_key/error_wrong_access_key" do
         access_key = "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZ1"
 
-        {:error, response: response, error_message: _error_message} =
+        {:error, %{response: response, error_message: _error_message}} =
           API.view_access_key("client.chainlink.testnet", nil, access_key)
 
         assert response["id"] == "dontcare"
