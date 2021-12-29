@@ -35,6 +35,7 @@ defmodule NearApi.Contracts do
   @doc """
   Returns the state change details of a contract based on the key prefix (encoded to base64).
   Pass an empty string for this param if you would like to return all state changes.
+  Warning: Experimental
   """
   @spec data_changes(
           account_ids :: String.t(),
@@ -44,6 +45,7 @@ defmodule NearApi.Contracts do
           {:ok, body :: map}
           | {:error, error_message: error_message :: String.t(), response: response :: map}
   def data_changes(account_ids, block_id \\ nil, key_prefix_base64 \\ nil)
+
   def data_changes(account_ids, block_id, key_prefix_base64)
       when is_binary(account_ids),
       do: data_changes([account_ids], block_id, key_prefix_base64)
@@ -53,6 +55,23 @@ defmodule NearApi.Contracts do
       payload_experimental("data_changes", account_ids, block_id)
       |> Map.put(:key_prefix_base64, key_prefix_base64 || "")
 
+    api_call_experimental(payload, "EXPERIMENTAL_changes")
+  end
+
+  @doc """
+  Returns code changes made when deploying a contract. Change is returned is a base64 encoded WASM file.
+  Warning: Experimental
+  """
+  @spec contract_code_changes(account_ids :: String.t(), block_id :: String.t()) ::
+          {:ok, body :: map}
+          | {:error, error_message: error_message :: String.t(), response: response :: map}
+  def contract_code_changes(account_ids, block_id \\ nil)
+
+  def contract_code_changes(account_ids, block_id) when is_binary(account_ids),
+    do: data_changes([account_ids], block_id)
+
+  def contract_code_changes(account_ids, block_id) do
+    payload = payload_experimental("contract_code_changes", account_ids, block_id)
     api_call_experimental(payload, "EXPERIMENTAL_changes")
   end
 end

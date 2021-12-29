@@ -104,4 +104,28 @@ defmodule NearApi.ContractsTest do
       end
     end
   end
+
+  describe ".contract_code_changes" do
+    test "success: contract_code_changes with finality: final" do
+      use_cassette "contract_code_changes/success" do
+        {:ok, body} = API.contract_code_changes(["yellowpie.testnet"])
+        assert body["id"] == "dontcare"
+        assert body["jsonrpc"] == "2.0"
+        assert body["result"]["block_hash"]
+        require IEx; IEx.pry
+
+        assert is_list(body["result"]["changes"])
+        refute body["result"]["error"]
+      end
+    end
+
+    test "success: contract_code_changes with block_id" do
+      use_cassette "contract_code_changes/success_block_id" do
+        block_id = "F4xEAQHe1fUwDzyha759UTr1WF8ozVukZdioVAb9yWGa"
+        {:ok, body} = API.contract_code_changes(["yellowpie.testnet"], block_id)
+        assert body["result"]["block_hash"] == block_id
+        refute body["result"]["error"]
+      end
+    end
+  end
 end
