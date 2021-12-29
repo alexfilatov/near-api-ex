@@ -84,4 +84,26 @@ defmodule NearApi.ContractsTest do
       end
     end
   end
+
+  describe ".data_changes" do
+    test "success: data_changes with finality: final" do
+      use_cassette "data_changes/success" do
+        {:ok, body} = API.data_changes(["yellowpie.testnet"])
+        assert body["id"] == "dontcare"
+        assert body["jsonrpc"] == "2.0"
+        assert body["result"]["block_hash"]
+        assert is_list(body["result"]["changes"])
+        refute body["result"]["error"]
+      end
+    end
+
+    test "success: data_changes with block_id" do
+      use_cassette "data_changes/success_block_id" do
+        block_id = "F4xEAQHe1fUwDzyha759UTr1WF8ozVukZdioVAb9yWGa"
+        {:ok, body} = API.data_changes(["yellowpie.testnet"], block_id)
+        assert body["result"]["block_hash"] == block_id
+        refute body["result"]["error"]
+      end
+    end
+  end
 end
