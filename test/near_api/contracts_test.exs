@@ -112,8 +112,6 @@ defmodule NearApi.ContractsTest do
         assert body["id"] == "dontcare"
         assert body["jsonrpc"] == "2.0"
         assert body["result"]["block_hash"]
-        require IEx; IEx.pry
-
         assert is_list(body["result"]["changes"])
         refute body["result"]["error"]
       end
