@@ -2,7 +2,7 @@ defmodule NearApi.Contracts do
   @moduledoc """
   NEAR RPC - Contracts API
   """
-  import NearApi.Utils, only: [api_call: 1, api_call_experimental: 2]
+  import NearApi.Utils, only: [api_call: 1]
   import NearApi.Payload
 
   @doc """
