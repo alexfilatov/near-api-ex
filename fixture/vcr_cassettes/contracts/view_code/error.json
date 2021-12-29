@@ -15,7 +15,7 @@
       "body": "{\"jsonrpc\":\"2.0\",\"error\":{\"name\":\"HANDLER_ERROR\",\"cause\":{\"name\":\"UNKNOWN_BLOCK\",\"info\":{\"block_reference\":{\"block_id\":\"8H9Bop1P4LtZMr4Xkne5CQHcnmiJFWzF77F4v3kMtYw1\"}}},\"code\":-32000,\"message\":\"Server error\",\"data\":\"DB Not Found Error: BLOCK HEADER: 8H9Bop1P4LtZMr4Xkne5CQHcnmiJFWzF77F4v3kMtYw1\"},\"id\":\"dontcare\"}",
       "headers": {
         "Server": "nginx/1.18.0 (Ubuntu)",
-        "Date": "Wed, 29 Dec 2021 00:34:59 GMT",
+        "Date": "Wed, 29 Dec 2021 01:23:07 GMT",
         "Content-Type": "application/json",
         "Content-Length": "313",
         "Vary": "Accept-Encoding",

@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "{\"id\":\"dontcare\",\"jsonrpc\":\"2.0\",\"method\":\"query\",\"params\":{\"account_id\":\"yellowpie.testnet\",\"finality\":\"final\",\"prefix_base64\":\"\",\"request_type\":\"view_state\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://rpc.testnet.near.org/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"jsonrpc\":\"2.0\",\"result\":{\"values\":[{\"key\":\"U1RBVEU=\",\"value\":\"AQAAAGEAgMakfo0DAAAAAAAAAAAAfQAAAAAAAAABAAAAbQ==\",\"proof\":[]},{\"key\":\"YREAAAB5ZWxsb3dwaWUudGVzdG5ldA==\",\"value\":\"7X/GpH6NAwAAAAAAAAAAAA==\",\"proof\":[]},{\"key\":\"YRUAAABib2IueWVsbG93cGllLnRlc3RuZXQ=\",\"value\":\"EwAAAAAAAAAAAAAAAAAAAA==\",\"proof\":[]},{\"key\":\"bQ==\",\"value\":\"CAAAAGZ0LTEuMC4wDQAAAFhPMTB4MTAgVG9rZW4EAAAAWE8xMAAAAAg=\",\"proof\":[]}],\"proof\":[],\"block_height\":76787440,\"block_hash\":\"F4xEAQHe1fUwDzyha759UTr1WF8ozVukZdioVAb9yWGa\"},\"id\":\"dontcare\"}",
+      "headers": {
+        "Server": "nginx/1.18.0 (Ubuntu)",
+        "Date": "Wed, 29 Dec 2021 01:32:01 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "514",
+        "Vary": "Accept-Encoding",
+        "Via": "1.1 google",
+        "access-control-allow-origin": "",
+        "Alt-Svc": "clear"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
