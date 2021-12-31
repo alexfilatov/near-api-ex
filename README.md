@@ -25,7 +25,7 @@ installed by adding `near_api` to your list of dependencies in
 ``` elixir
 def deps do
   [
-    {:near_api, "~> 0.1.1"}
+    {:near_api, "~> 0.1.2"}
   ]
 end
 ```
