@@ -8,8 +8,8 @@ production*
 -   [Installation](#installation)
 -   [Usage](#usage)
     -   [Access Keys](#access-keys)
-    -   [Accounts / Contracts (In Progress)](#accounts--contracts-in-progress)
-    -   [Block / Chunk (Backlog)](#block-chunk-backlog)
+    -   [Accounts / Contracts](#accounts--contracts)
+    -   [Block / Chunk (In Progress)](#block-chunk-backlog-in-progress)
     -   [Gas (Backlog)](#gas-backlog)
     -   [Protocol (Backlog)](#protocol-backlog)
     -   [Network (Backlog)](#network-backlog)
@@ -43,14 +43,14 @@ Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">N
 
 [Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api_access_keys.livemd)
 
-### Accounts / Contracts (In Progress)
+### Accounts / Contracts
 
 View details about accounts and contracts as well as perform contract
 calls.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
 
-### Block / Chunk (Backlog)
+### Block / Chunk (In Progress)
 
 Query the network and get details about specific blocks or chunks.
 
