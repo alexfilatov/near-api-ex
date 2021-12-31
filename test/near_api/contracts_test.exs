@@ -16,7 +16,6 @@ defmodule NearApi.ContractsTest do
         assert body["id"] == "dontcare"
         assert body["jsonrpc"] == "2.0"
 
-        assert body["result"]["code_base64"]
         assert body["result"]["code_base64"] |> Base.decode64!() |> is_bitstring()
 
         assert body["result"]["hash"]
@@ -130,9 +129,10 @@ defmodule NearApi.ContractsTest do
   describe ".call_function" do
     test "error: call_function for non-existent function" do
       use_cassette "call_function/error_function_not_found" do
-        method_name = "hello_world"
-        args_base64 = "test"
+        method_name = "imaginary_method"
+        args_base64 = %{account_id: "yellowpie.testnet"} |> Jason.encode!() |> Base.encode64()
         {:error, error} = API.call_function("yellowpie.testnet", method_name, args_base64)
+
         assert String.match?(error.response["result"]["error"], ~r/MethodNotFound/)
       end
     end

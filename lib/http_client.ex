@@ -1,10 +1,16 @@
 defmodule NearApi.HttpClient do
   use HTTPoison.Base
 
+  @doc """
+  Performs a "query" call to NEAR RPC API
+  """
   def api_call(payload) do
     perform_call("query", payload)
   end
 
+  @doc """
+  Performs a "method" call to NEAR RPC API
+  """
   def api_call_experimental(payload, method) do
     perform_call(method, payload)
   end
