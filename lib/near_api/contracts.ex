@@ -71,8 +71,7 @@ defmodule NearApi.Contracts do
   end
 
   @doc """
-  Returns code changes made when deploying a contract. Change is returned is a base64 encoded WASM file.
-  Warning: Experimental
+  Allows you to call a contract method as a view function.
   """
   @spec call_function(account_id :: String.t(), method_name :: String.t(), block_id :: String.t()) ::
           {:ok, body :: map} | NearApi.Errors.t()
