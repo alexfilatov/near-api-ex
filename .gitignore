@@ -26,3 +26,5 @@ near_api-*.tar
 /tmp/
 
 .env
+
+test/sandbox

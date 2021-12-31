@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "{\"id\":\"dontcare\",\"jsonrpc\":\"2.0\",\"method\":\"EXPERIMENTAL_changes\",\"params\":{\"account_ids\":[\"yellowpie.testnet\"],\"block_id\":\"F4xEAQHe1fUwDzyha759UTr1WF8ozVukZdioVAb9yWGa\",\"changes_type\":\"contract_code_changes\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://rpc.testnet.near.org/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"jsonrpc\":\"2.0\",\"result\":{\"block_hash\":\"F4xEAQHe1fUwDzyha759UTr1WF8ozVukZdioVAb9yWGa\",\"changes\":[]},\"id\":\"dontcare\"}",
+      "headers": {
+        "Server": "nginx/1.18.0 (Ubuntu)",
+        "Date": "Wed, 29 Dec 2021 21:19:58 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "117",
+        "Vary": "Accept-Encoding",
+        "Via": "1.1 google",
+        "access-control-allow-origin": "",
+        "Alt-Svc": "clear"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

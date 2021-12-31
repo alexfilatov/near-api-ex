@@ -2,30 +2,38 @@ defmodule NearApi.Errors do
   @moduledoc """
   NEAR API Error handlers: Access Keys
   """
+  alias __MODULE__
 
-  @spec render_error(error_response :: map) ::
+  @type t ::
           {:error,
            %{
-             error_message: error_message :: String.t(),
-             error_name: error_name :: String.t(),
-             error_code: error_code :: integer,
-             error_description: error_description :: String.t(),
-             response: response :: String.t()
+             error_message: String.t(),
+             error_type: String.t(),
+             error_cause: String.t(),
+             error_code: integer,
+             error_description: String.t(),
+             response: map
            }}
+
+  @spec render_error(error_response :: map) :: Errors.t()
   def render_error(
         %{
           "error" => %{
-            "name" => error_name,
+            "name" => error_type,
             "message" => error_message,
             "code" => error_code,
-            "data" => error_description
+            "data" => error_description,
+            "cause" => %{
+              "name" => error_cause
+            }
           }
         } = response
       ) do
     {:error,
      %{
        error_message: error_message,
-       error_name: error_name,
+       error_type: error_type,
+       error_cause: error_cause,
        error_code: error_code,
        error_description: error_description,
        response: response

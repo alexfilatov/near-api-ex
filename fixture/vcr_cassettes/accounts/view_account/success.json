@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "{\"id\":\"dontcare\",\"jsonrpc\":\"2.0\",\"method\":\"query\",\"params\":{\"account_id\":\"client.chainlink.testnet\",\"finality\":\"final\",\"request_type\":\"view_account\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://rpc.testnet.near.org/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"jsonrpc\":\"2.0\",\"result\":{\"amount\":\"149694984123794289100000000\",\"locked\":\"0\",\"code_hash\":\"2snK55re3tXyYAPhCfv34VcCFsr6CUZYwD3G8ouWK2PP\",\"storage_usage\":233329,\"storage_paid_at\":0,\"block_height\":76786607,\"block_hash\":\"CUh3AaxckGsUdPv5Xj9Z224nMJENZ3YwsvSsx6Nzafqh\"},\"id\":\"dontcare\"}",
+      "headers": {
+        "Server": "nginx/1.18.0 (Ubuntu)",
+        "Date": "Wed, 29 Dec 2021 01:23:08 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "282",
+        "Vary": "Accept-Encoding",
+        "Via": "1.1 google",
+        "access-control-allow-origin": "",
+        "Alt-Svc": "clear"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
