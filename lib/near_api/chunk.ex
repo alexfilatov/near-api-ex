@@ -14,7 +14,6 @@ defmodule NearApi.Chunk do
     api_call_method(payload, "chunk")
   end
 
-  defp payload_chunk(chunk_id \\ nil, block_id \\ nil, shard_id \\ nil)
   defp payload_chunk(chunk_id, nil, nil), do: %{chunk_id: chunk_id}
   defp payload_chunk(nil, block_id, shard_id), do: %{block_id: block_id, shard_id: shard_id}
 end
