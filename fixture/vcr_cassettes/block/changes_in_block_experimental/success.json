@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "{\"id\":\"dontcare\",\"jsonrpc\":\"2.0\",\"method\":\"EXPERIMENTAL_changes_in_block\",\"params\":{\"finality\":\"final\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://rpc.testnet.near.org/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"jsonrpc\":\"2.0\",\"result\":{\"block_hash\":\"125iE9QcZjL4n34pZP8MoByevgaziz93oYV2a6W6pJUX\",\"changes\":[]},\"id\":\"dontcare\"}",
+      "headers": {
+        "Server": "nginx/1.18.0 (Ubuntu)",
+        "Date": "Sat, 01 Jan 2022 22:13:07 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "117",
+        "Vary": "Accept-Encoding",
+        "Via": "1.1 google",
+        "access-control-allow-origin": "",
+        "Alt-Svc": "clear"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -43,39 +43,23 @@ defmodule NearApi.BlockTest do
 
   describe ".changes_in_block_experimental" do
     test "success: changes_in_block_experimental with finality: final" do
-      #      use_cassette "changes_in_block_experimental/success" do
-      {:ok, body} = API.block("yellowpie.testnet")
-      assert body["id"] == "dontcare"
-      assert body["jsonrpc"] == "2.0"
-      assert body["result"]["block_height"]
-      assert body["result"]["block_hash"]
-      assert is_list(body["result"]["proof"])
-      assert is_list(body["result"]["values"])
-      refute body["result"]["error"]
-      #      end
+      use_cassette "changes_in_block_experimental/success" do
+        {:ok, body} = API.changes_in_block()
+        assert body["id"] == "dontcare"
+        assert body["jsonrpc"] == "2.0"
+        assert body["result"]["block_hash"]
+        assert is_list(body["result"]["changes"])
+        refute body["result"]["error"]
+      end
     end
 
     test "success: changes_in_block_experimental with block_id" do
-      #      use_cassette "changes_in_block_experimental/success_block_id" do
-      block_id = "F4xEAQHe1fUwDzyha759UTr1WF8ozVukZdioVAb9yWGa"
-      {:ok, body} = API.block("yellowpie.testnet", block_id)
-      assert body["result"]["block_hash"] == block_id
-      refute body["result"]["error"]
-      #      end
-    end
-
-    test "error: changes_in_block_experimental state is too large" do
-      #      use_cassette "changes_in_block_experimental/error_too_large" do
-      {:error, error} = API.block("client.chainlink.testnet")
-      assert error.error_cause == "TOO_LARGE_CONTRACT_STATE"
-      assert error.error_code == -32000
-
-      assert error.error_description ==
-               "State of contract client.chainlink.testnet is too large to be viewed"
-
-      assert error.error_message == "Server error"
-      assert error.error_type == "HANDLER_ERROR"
-      #      end
+      use_cassette "changes_in_block_experimental/success_block_id" do
+        block_id = "125iE9QcZjL4n34pZP8MoByevgaziz93oYV2a6W6pJUX"
+        {:ok, body} = API.changes_in_block(block_id)
+        assert body["result"]["block_hash"] == block_id
+        refute body["result"]["error"]
+      end
     end
   end
 end

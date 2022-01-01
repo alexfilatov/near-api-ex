@@ -9,7 +9,7 @@ defmodule NearApi.Utils do
   """
   def api_call(payload) do
     payload
-    |> NearApi.HttpClient.api_call()
+    |> NearApi.HttpClient.api_call_method("query")
     |> process_api_response()
   end
 
