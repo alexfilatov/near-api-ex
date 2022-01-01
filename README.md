@@ -9,8 +9,8 @@ production*
 -   [Usage](#usage)
     -   [Access Keys](#access-keys)
     -   [Accounts / Contracts](#accounts--contracts)
-    -   [Block / Chunk (In Progress)](#block-chunk-backlog-in-progress)
-    -   [Gas (Backlog)](#gas-backlog)
+    -   [Block / Chunk](#block-chunk-backlog)
+    -   [Gas (Backlog) (In Progress)](#gas-backlog)
     -   [Protocol (Backlog)](#protocol-backlog)
     -   [Network (Backlog)](#network-backlog)
     -   [Transactions (Backlog)](#transactions-backlog)
@@ -25,7 +25,7 @@ installed by adding `near_api` to your list of dependencies in
 ``` elixir
 def deps do
   [
-    {:near_api, "~> 0.1.2"}
+    {:near_api, "~> 0.1.4"}
   ]
 end
 ```
@@ -50,13 +50,13 @@ calls.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
 
-### Block / Chunk (In Progress)
+### Block / Chunk 
 
 Query the network and get details about specific blocks or chunks.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
 
-### Gas (Backlog)
+### Gas (In Progress) 
 
 Get gas price for a specific block or hash.
 
