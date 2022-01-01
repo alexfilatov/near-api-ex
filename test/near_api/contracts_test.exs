@@ -137,23 +137,16 @@ defmodule NearApi.ContractsTest do
       end
     end
 
-    # TODO: implement getter and setter tests when figure out what is wrong with the contract:
-    # error on set_status: wasm execution failed with error: FunctionCallError(HostError(ProhibitedInView { method_name: \"attached_deposit\" }))
-    # error on get_status: "wasm execution failed with error: FunctionCallError(HostError(GuestPanic { panic_msg: \"panicked at 'Cannot deserialize the contract state.: Custom { kind: InvalidData, error: \\\"Not all bytes read\\\
-    @tag :skip
     test "success: call_function get_status" do
-      #      use_cassette "call_function/success_getter" do
+      use_cassette "call_function/success_getter" do
+        args_base64 =
+          %{account_id: "status_message.yellowpie.testnet"} |> Jason.encode!() |> Base.encode64()
 
-      method_name = "set_status"
-      args_base64 = %{message: "hello world"} |> Jason.encode!() |> Base.encode64()
-      {:ok, result} = API.call_function("yellowpie.testnet", method_name, args_base64)
+        {:ok, result} =
+          API.call_function("status_message.yellowpie.testnet", "get_status", args_base64)
 
-      method_name = "get_status"
-      args_base64 = %{account_id: "yellowpie.testnet"} |> Jason.encode!() |> Base.encode64()
-      {:ok, result} = API.call_function("yellowpie.testnet", method_name, args_base64)
-
-      assert result["result"]["result"] == "some_status"
-      #      end
+        assert to_string(result["result"]["result"]) == "\"hello world\""
+      end
     end
   end
 end

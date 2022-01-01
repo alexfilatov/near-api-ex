@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "{\"id\":\"dontcare\",\"jsonrpc\":\"2.0\",\"method\":\"query\",\"params\":{\"account_id\":\"status_message.yellowpie.testnet\",\"args_base64\":\"eyJhY2NvdW50X2lkIjoic3RhdHVzX21lc3NhZ2UueWVsbG93cGllLnRlc3RuZXQifQ==\",\"finality\":\"final\",\"gas\":100000000000000,\"method_name\":\"get_status\",\"request_type\":\"call_function\"}}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://rpc.testnet.near.org/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"jsonrpc\":\"2.0\",\"result\":{\"result\":[34,104,101,108,108,111,32,119,111,114,108,100,34],\"logs\":[],\"block_height\":77261947,\"block_hash\":\"GrwubfRvCX5NzxZbHKjxGUDRDFAtKNzHi2LAuq1nwVDd\"},\"id\":\"dontcare\"}",
+      "headers": {
+        "Server": "nginx/1.18.0 (Ubuntu)",
+        "Date": "Sat, 01 Jan 2022 17:31:37 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "198",
+        "Vary": "Accept-Encoding",
+        "Via": "1.1 google",
+        "access-control-allow-origin": "",
+        "Alt-Svc": "clear"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
