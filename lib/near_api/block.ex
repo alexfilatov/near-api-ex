@@ -2,7 +2,7 @@ defmodule NearApi.Block do
   @moduledoc """
   NEAR RPC - Block API
   """
-  import NearApi.Utils, only: [api_call: 1, api_call_method: 2]
+  import NearApi.Utils, only: [api_call_method: 2]
 
   @doc """
   Queries network and returns block for given height or hash.
@@ -27,6 +27,6 @@ defmodule NearApi.Block do
     api_call_method(payload, "EXPERIMENTAL_changes_in_block")
   end
 
-  defp payload_block(nil, finality \\ "final"), do: %{finality: finality}
+  defp payload_block(nil, finality), do: %{finality: finality}
   defp payload_block(block_id, _finality), do: %{block_id: block_id}
 end
