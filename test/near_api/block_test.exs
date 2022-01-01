@@ -32,12 +32,12 @@ defmodule NearApi.BlockTest do
     end
 
     test "error: block with with wrong block_id" do
-      #      use_cassette "block/error" do
-      block_id = "8H9Bop1P4LtZMr4Xkne5CQHcnmiJFWzF77F4v3kMtYw1"
-      {:error, error} = API.block("client.chainlink.testnet", block_id)
-      assert error.error_cause == "UNKNOWN_BLOCK"
-      assert String.match?(error.error_description, ~r/DB Not Found Error/)
-      #      end
+      use_cassette "block/error" do
+        block_id = "8H9Bop1P4LtZMr4Xkne5CQHcnmiJFWzF77F4v3kMtYw1"
+        {:error, error} = API.block(block_id)
+        assert error.error_cause == "UNKNOWN_BLOCK"
+        assert String.match?(error.error_description, ~r/DB Not Found Error/)
+      end
     end
   end
 
