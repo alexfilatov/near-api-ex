@@ -2,7 +2,7 @@ defmodule NearApi.Accounts do
   @moduledoc """
   NEAR RPC - Accounts API
   """
-  import NearApi.Utils, only: [api_call: 1, api_call_experimental: 2]
+  import NearApi.Utils, only: [api_call: 1, api_call_method: 2]
   import NearApi.Payload
 
   @doc """
@@ -25,6 +25,6 @@ defmodule NearApi.Accounts do
           | {:error, error_message: error_message :: String.t(), response: response :: map}
   def account_changes(account_ids, block_id \\ nil) do
     payload = payload_experimental("account_changes", account_ids, block_id)
-    api_call_experimental(payload, "EXPERIMENTAL_changes")
+    api_call_method(payload, "EXPERIMENTAL_changes")
   end
 end

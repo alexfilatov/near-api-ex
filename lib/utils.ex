@@ -15,9 +15,10 @@ defmodule NearApi.Utils do
 
   @doc """
   Does the actual RPC call to the NEAR API and formats output
+  Usually used for experimental calls
   """
-  def api_call_experimental(payload, method) do
-    response = NearApi.HttpClient.api_call_experimental(payload, method)
+  def api_call_method(payload, method) do
+    response = NearApi.HttpClient.api_call_method(payload, method)
 
     process_api_response(response)
   end

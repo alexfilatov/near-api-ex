@@ -11,7 +11,7 @@ defmodule NearApi.HttpClient do
   @doc """
   Performs a "method" call to NEAR RPC API
   """
-  def api_call_experimental(payload, method) do
+  def api_call_method(payload, method) do
     perform_call(method, payload)
   end
 
