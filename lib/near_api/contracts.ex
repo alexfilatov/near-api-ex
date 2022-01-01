@@ -2,7 +2,7 @@ defmodule NearApi.Contracts do
   @moduledoc """
   NEAR RPC - Contracts API
   """
-  import NearApi.Utils, only: [api_call: 1, api_call_experimental: 2]
+  import NearApi.Utils, only: [api_call: 1, api_call_method: 2]
   import NearApi.Payload
 
   @doc """
@@ -51,7 +51,7 @@ defmodule NearApi.Contracts do
       payload_experimental("data_changes", account_ids, block_id)
       |> Map.put(:key_prefix_base64, key_prefix_base64 || "")
 
-    api_call_experimental(payload, "EXPERIMENTAL_changes")
+    api_call_method(payload, "EXPERIMENTAL_changes")
   end
 
   @doc """
@@ -67,7 +67,7 @@ defmodule NearApi.Contracts do
 
   def contract_code_changes(account_ids, block_id) do
     payload = payload_experimental("contract_code_changes", account_ids, block_id)
-    api_call_experimental(payload, "EXPERIMENTAL_changes")
+    api_call_method(payload, "EXPERIMENTAL_changes")
   end
 
   @doc """
