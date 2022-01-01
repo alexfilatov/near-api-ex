@@ -20,9 +20,12 @@ defmodule NearApi.Errors do
         %{
           "error" => %{
             "name" => error_type,
-            "message" => error_message, # TODO: could be deprecated
-            "code" => error_code, # TODO: could be deprecated
-            "data" => error_description, # TODO: could be deprecated
+            # TODO: could be deprecated
+            "message" => error_message,
+            # TODO: could be deprecated
+            "code" => error_code,
+            # TODO: could be deprecated
+            "data" => error_description,
             "cause" => %{
               "name" => error_cause
             }
