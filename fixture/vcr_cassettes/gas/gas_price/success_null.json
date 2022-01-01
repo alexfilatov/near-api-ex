@@ -1,0 +1,30 @@
+[
+  {
+    "request": {
+      "body": "{\"id\":\"dontcare\",\"jsonrpc\":\"2.0\",\"method\":\"gas_price\",\"params\":[null]}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://rpc.testnet.near.org/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"jsonrpc\":\"2.0\",\"result\":{\"gas_price\":\"100000000\"},\"id\":\"dontcare\"}",
+      "headers": {
+        "Server": "nginx/1.18.0 (Ubuntu)",
+        "Date": "Sat, 01 Jan 2022 23:24:58 GMT",
+        "Content-Type": "application/json",
+        "Content-Length": "68",
+        "Vary": "Accept-Encoding",
+        "Via": "1.1 google",
+        "access-control-allow-origin": "",
+        "Alt-Svc": "clear"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

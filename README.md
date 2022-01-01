@@ -10,8 +10,8 @@ production*
     -   [Access Keys](#access-keys)
     -   [Accounts / Contracts](#accounts--contracts)
     -   [Block / Chunk](#block-chunk-backlog)
-    -   [Gas (Backlog) (In Progress)](#gas-backlog)
-    -   [Protocol (Backlog)](#protocol-backlog)
+    -   [Gas](#gas-backlog)
+    -   [Protocol (In Progress)](#protocol-in-progress)
     -   [Network (Backlog)](#network-backlog)
     -   [Transactions (Backlog)](#transactions-backlog)
     -   [Sandbox (Backlog)](#sandbox-backlog)
@@ -56,13 +56,13 @@ Query the network and get details about specific blocks or chunks.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
 
-### Gas (In Progress) 
+### Gas  
 
 Get gas price for a specific block or hash.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
 
-### Protocol (Backlog)
+### Protocol (In Progress)
 
 Retrieve current genesis and protocol configuration.
 
