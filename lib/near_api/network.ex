@@ -17,4 +17,12 @@ defmodule NearApi.Network do
   """
   @spec network_info() :: {:ok, body :: map} | NearApi.Errors.t()
   def network_info(), do: api_call_method(nil, "network_info")
+
+  @doc """
+  Queries active validators on the network returning details and the state of validation on the blockchain.
+  """
+  @spec validators() :: {:ok, body :: map} | NearApi.Errors.t()
+  def validators(block_id \\ nil) do
+    api_call_method([block_id], "validators")
+  end
 end

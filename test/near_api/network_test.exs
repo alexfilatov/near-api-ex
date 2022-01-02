@@ -37,4 +37,16 @@ defmodule NearApi.NetworkTest do
       end
     end
   end
+
+  describe ".validators" do
+    test "success" do
+      use_cassette "validators/success" do
+        {:ok, body} = API.validators()
+        assert body["id"] == "dontcare"
+        assert body["jsonrpc"] == "2.0"
+        assert is_list(body["result"]["current_validators"])
+        refute body["result"]["error"]
+      end
+    end
+  end
 end
