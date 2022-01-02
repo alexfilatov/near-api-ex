@@ -14,6 +14,13 @@ defmodule NearApi.Protocol do
   Returns most recent protocol configuration or a specific queried block.
   Useful for finding current storage and transaction costs.
   """
-  @spec protocol_config(block_id :: any, finality :: String.t()) :: {:ok, body :: map} | NearApi.Errors.t()
-  def protocol_config(block_id \\ nil, finality \\ "final"), do: api_call_method(nil, "EXPERIMENTAL_protocol_config")
+  @spec protocol_config(block_id :: any, finality :: String.t()) ::
+          {:ok, body :: map} | NearApi.Errors.t()
+  def protocol_config(block_id \\ nil, finality \\ "final") do
+    payload = payload(block_id, finality)
+    api_call_method(payload, "EXPERIMENTAL_protocol_config")
+  end
+
+  defp payload(nil, finality), do: %{finality: finality}
+  defp payload(block_id, _finality), do: %{block_id: block_id}
 end
