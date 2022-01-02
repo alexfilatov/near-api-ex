@@ -11,8 +11,8 @@ production*
     -   [Accounts / Contracts](#accounts--contracts)
     -   [Block / Chunk](#block-chunk-backlog)
     -   [Gas](#gas-backlog)
-    -   [Protocol (In Progress)](#protocol-in-progress)
-    -   [Network (Backlog)](#network-backlog)
+    -   [Protocol](#protocol)
+    -   [Network (In Progress)](#network-in-progress)
     -   [Transactions (Backlog)](#transactions-backlog)
     -   [Sandbox (Backlog)](#sandbox-backlog)
     
@@ -62,13 +62,13 @@ Get gas price for a specific block or hash.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
 
-### Protocol (In Progress)
+### Protocol
 
 Retrieve current genesis and protocol configuration.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
 
-### Network (Backlog)
+### Network (In Progress)
 
 Return status information for nodes and validators.
 
