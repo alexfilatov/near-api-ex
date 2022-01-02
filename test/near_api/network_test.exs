@@ -23,4 +23,18 @@ defmodule NearApi.NetworkTest do
       end
     end
   end
+
+  describe ".network_info" do
+    test "success" do
+      use_cassette "network_info/success" do
+        {:ok, body} = API.network_info()
+        assert body["id"] == "dontcare"
+        assert body["jsonrpc"] == "2.0"
+        assert is_list(body["result"]["active_peers"])
+        assert is_list(body["result"]["known_producers"])
+        assert body["result"]["peer_max_count"]
+        refute body["result"]["error"]
+      end
+    end
+  end
 end
