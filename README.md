@@ -12,8 +12,8 @@ production*
     -   [Block / Chunk](#block-chunk-backlog)
     -   [Gas](#gas-backlog)
     -   [Protocol](#protocol)
-    -   [Network (In Progress)](#network-in-progress)
-    -   [Transactions (Backlog)](#transactions-backlog)
+    -   [Network](#network)
+    -   [Transactions (In Progress)](#transactions-in-progress)
     -   [Sandbox (Backlog)](#sandbox-backlog)
     
 ## Installation
@@ -68,13 +68,13 @@ Retrieve current genesis and protocol configuration.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
 
-### Network (In Progress)
+### Network
 
 Return status information for nodes and validators.
 
 Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/network">NEAR API Docs: Network</a>
 
-### Transactions (Backlog)
+### Transactions (In Progress)
 
 Send transactions and query their status.
 
