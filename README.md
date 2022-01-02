@@ -39,7 +39,7 @@ To see NEAR API in action please clone this repository and [run Livebook locally
 
 Retrieve information about an account's access keys.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">NEAR API Docs: Access Keys</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">NEAR API Docs: Access Keys</a>
 
 [Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api_access_keys.livemd)
 
@@ -48,43 +48,57 @@ Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">N
 View details about accounts and contracts as well as perform contract
 calls.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
+
+TBD: [Livebook](#)
 
 ### Block / Chunk 
 
 Query the network and get details about specific blocks or chunks.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
+
+TBD: [Livebook](#)
 
 ### Gas  
 
 Get gas price for a specific block or hash.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
+
+TBD: [Livebook](#)
 
 ### Protocol
 
 Retrieve current genesis and protocol configuration.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
+
+TBD: [Livebook](#)
 
 ### Network
 
 Return status information for nodes and validators.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/network">NEAR API Docs: Network</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/network">NEAR API Docs: Network</a>
+
+TBD: [Livebook](#)
 
 ### Transactions (In Progress)
 
 Send transactions and query their status.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/transactions">NEAR API Docs: Transactions</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/transactions">NEAR API Docs: Transactions</a>
+
+TBD: [Livebook](#)
 
 ### Sandbox (Backlog)
 
 Patch state on a local sandbox node.
 
-Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/sandbox">NEAR API Docs: Sandbox</a>
+Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/sandbox">NEAR API Docs: Sandbox</a>
+
+TBD: [Livebook](#)
 
 
 ## Development
