@@ -2,7 +2,7 @@ defmodule NearApi.Gas do
   @moduledoc """
   NEAR RPC - Gas API
   """
-  import NearApi.Utils, only: [api_call_method: 2]
+  import NearApi.Helpers, only: [api_call_method: 2]
 
   @doc """
   Returns gas price for a specific block_height or block_hash.

@@ -2,7 +2,7 @@ defmodule NearApi.Accounts do
   @moduledoc """
   NEAR RPC - Accounts API
   """
-  import NearApi.Utils, only: [api_call: 1, api_call_method: 2]
+  import NearApi.Helpers, only: [api_call: 1, api_call_method: 2]
   import NearApi.Payload
 
   @doc """

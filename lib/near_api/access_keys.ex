@@ -2,7 +2,7 @@ defmodule NearApi.AccessKeys do
   @moduledoc """
   NEAR RPC - Access Keys API
   """
-  import NearApi.Utils, only: [public_key: 0, api_call: 1]
+  import NearApi.Helpers, only: [public_key: 0, api_call: 1]
 
   @doc """
   Returns information about a single access key for given account.

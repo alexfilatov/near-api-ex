@@ -2,7 +2,7 @@ defmodule NearApi.Protocol do
   @moduledoc """
   NEAR RPC - Protocol API
   """
-  import NearApi.Utils, only: [api_call_method: 2]
+  import NearApi.Helpers, only: [api_call_method: 2]
 
   @doc """
   Returns current genesis configuration.

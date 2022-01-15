@@ -2,7 +2,7 @@ defmodule NearApi.Block do
   @moduledoc """
   NEAR RPC - Block API
   """
-  import NearApi.Utils, only: [api_call_method: 2]
+  import NearApi.Helpers, only: [api_call_method: 2]
 
   @doc """
   Queries network and returns block for given height or hash.

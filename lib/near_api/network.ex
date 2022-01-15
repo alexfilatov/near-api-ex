@@ -2,7 +2,7 @@ defmodule NearApi.Network do
   @moduledoc """
   NEAR RPC - Network API
   """
-  import NearApi.Utils, only: [api_call_method: 2]
+  import NearApi.Helpers, only: [api_call_method: 2]
 
   @doc """
   Returns general status of a given node (sync status, nearcore node version, protocol version, etc),
