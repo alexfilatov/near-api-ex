@@ -46,7 +46,9 @@ defmodule Borsh do
       """
       defp encode_item(value, {key, format}) when format === [:borsh] do
         [
-          binarify(222, 32),
+          # 4bytes binary length of the List
+          value |> length() |> binarify(32),
+          # binarified list items
           Enum.map(value, fn i ->
             i.__struct__.borsh_encode(i)
           end)
