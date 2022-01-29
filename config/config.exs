@@ -1,5 +1,3 @@
 import Config
 
-config :remixed_remix,
-  escript: false,
-  silent: false
+import_config "#{config_env()}.exs"
