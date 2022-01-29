@@ -1,4 +1,4 @@
-defmodule NearApi.Errors do
+defmodule NearApi.RPC.Errors do
   @moduledoc """
   NEAR API Error handlers: Access Keys
   """

@@ -1,7 +1,7 @@
-defmodule NearApi.GasTest do
+defmodule NearApi.RPC.GasTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  alias NearApi.Gas, as: API
+  alias NearApi.RPC.Gas, as: API
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")

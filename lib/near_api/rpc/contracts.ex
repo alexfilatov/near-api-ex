@@ -1,4 +1,4 @@
-defmodule NearApi.Contracts do
+defmodule NearApi.RPC.Contracts do
   @moduledoc """
   NEAR RPC - Contracts API
   """
@@ -10,7 +10,7 @@ defmodule NearApi.Contracts do
   Please note that the returned code will be encoded in base64.
   """
   @spec view_code(account_id :: String.t(), block_id :: String.t()) ::
-          {:ok, body :: map} | NearApi.Errors.t()
+          {:ok, body :: map} | NearApi.RPC.Errors.t()
   def view_code(account_id, block_id \\ nil) do
     payload = payload("view_code", account_id, block_id)
     api_call(payload)
@@ -22,10 +22,9 @@ defmodule NearApi.Contracts do
   Please note that the returned state will be base64 encoded as well.
   """
   @spec view_state(account_id :: String.t(), block_id :: String.t(), prefix_base64 :: String.t()) ::
-          {:ok, body :: map} | NearApi.Errors.t()
+          {:ok, body :: map} | NearApi.RPC.Errors.t()
   def view_state(account_id, block_id \\ nil, prefix_base64 \\ nil) do
-    payload =
-      payload("view_state", account_id, block_id) |> Map.put(:prefix_base64, prefix_base64 || "")
+    payload = payload("view_state", account_id, block_id) |> Map.put(:prefix_base64, prefix_base64 || "")
 
     api_call(payload)
   end
@@ -39,7 +38,7 @@ defmodule NearApi.Contracts do
           account_ids :: String.t(),
           block_id :: String.t(),
           key_prefix_base64 :: String.t()
-        ) :: {:ok, body :: map} | NearApi.Errors.t()
+        ) :: {:ok, body :: map} | NearApi.RPC.Errors.t()
   def data_changes(account_ids, block_id \\ nil, key_prefix_base64 \\ nil)
 
   def data_changes(account_ids, block_id, key_prefix_base64)
@@ -59,7 +58,7 @@ defmodule NearApi.Contracts do
   Warning: Experimental
   """
   @spec contract_code_changes(account_ids :: String.t(), block_id :: String.t()) ::
-          {:ok, body :: map} | NearApi.Errors.t()
+          {:ok, body :: map} | NearApi.RPC.Errors.t()
   def contract_code_changes(account_ids, block_id \\ nil)
 
   def contract_code_changes(account_ids, block_id) when is_binary(account_ids),
@@ -74,7 +73,7 @@ defmodule NearApi.Contracts do
   Allows you to call a contract method as a view function.
   """
   @spec call_function(account_id :: String.t(), method_name :: String.t(), block_id :: String.t()) ::
-          {:ok, body :: map} | NearApi.Errors.t()
+          {:ok, body :: map} | NearApi.RPC.Errors.t()
   def call_function(account_id, method_name, args_base64, block_id \\ nil) do
     payload =
       payload("call_function", account_id, block_id)

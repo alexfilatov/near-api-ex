@@ -1,7 +1,7 @@
-defmodule NearApi.AccessKeysTest do
+defmodule NearApi.RPC.AccessKeysTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  alias NearApi.AccessKeys, as: API
+  alias NearApi.RPC.AccessKeys, as: API
 
   setup do
     System.put_env("NEAR_PUBLIC_KEY", "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW")

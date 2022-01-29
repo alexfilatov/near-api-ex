@@ -1,6 +1,6 @@
 <!-- livebook:{"persist_outputs":true} -->
 
-# NearApi.AccessKeys
+# NearApi.RPC.AccessKeys
 
 ## Setup
 
@@ -13,7 +13,7 @@ System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
 :ok
 ```
 
-## NearApi.AccessKeys.view_access_key/3
+## NearApi.RPC.AccessKeys.view_access_key/3
 
 Returns information about a single access key for given account.
 
@@ -21,17 +21,15 @@ If `permission` of the key is `FunctionCall`, it will return more details such a
 
 <!-- livebook:{"break_markdown":true} -->
 
-Parameters are `account_id`, `block_id`. 
+Parameters are `account_id`, `block_id`.
 When `block_id` is `nil` - we API returns information about latest block of the account according to `finality` parameter
 
 <!-- livebook:{"break_markdown":true} -->
 
 #### Success
 
-<!-- livebook:{"reevaluate_automatically":true} -->
-
 ```elixir
-NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
+NearApi.RPC.AccessKeys.view_access_key("client.chainlink.testnet")
 ```
 
 ```output
@@ -40,8 +38,8 @@ NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
    "id" => "dontcare",
    "jsonrpc" => "2.0",
    "result" => %{
-     "block_hash" => "8z8S2zaBJAgMX5q8qhXWoZ2qgWD1RdFfFw4cZzN8iWJn",
-     "block_height" => 76720444,
+     "block_hash" => "HRNNsneNW2XgMMpknchzjJH9vVhgv9tbW3Tna2Q2WhoD",
+     "block_height" => 77492501,
      "nonce" => 157,
      "permission" => %{
        "FunctionCall" => %{
@@ -57,7 +55,7 @@ NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
 When we specify `block_id` API returns access key for given block
 
 ```elixir
-NearApi.AccessKeys.view_access_key(
+NearApi.RPC.AccessKeys.view_access_key(
   "client.chainlink.testnet",
   "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
 )
@@ -94,16 +92,17 @@ Passed arguments can't be parsed by JSON RPC server (missing arguments, wrong fo
 <!-- livebook:{"reevaluate_automatically":true} -->
 
 ```elixir
-NearApi.AccessKeys.view_access_key("client.chainlink__.testnet")
+NearApi.RPC.AccessKeys.view_access_key("client.chainlink__.testnet")
 ```
 
 ```output
 {:error,
  %{
+   error_cause: "PARSE_ERROR",
    error_code: -32700,
    error_description: "Failed parsing args: [client.chainlink__.testnet]: the value has invalid characters for account ID",
    error_message: "Parse error",
-   error_name: "REQUEST_VALIDATION_ERROR",
+   error_type: "REQUEST_VALIDATION_ERROR",
    response: %{
      "error" => %{
        "cause" => %{
@@ -126,32 +125,33 @@ NearApi.AccessKeys.view_access_key("client.chainlink__.testnet")
 When `account_id` is valid but the you're using a key without permissions to this account, you'll get an `:error` struct with simple `error_message` and raw response in `response` field. (Note - NEAR platform returns a `success` reponse in this case but I wrapped this one as an error anyway)
 
 ```elixir
-NearApi.AccessKeys.view_access_key("client.chainlink404.testnet")
+NearApi.RPC.AccessKeys.view_access_key("client.chainlink404.testnet")
 ```
 
 ```output
 {:error,
- [
+ %{
+   error_message: "access key ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW does not exist while viewing",
+   error_type: "SOFT_ERROR",
    response: %{
      "id" => "dontcare",
      "jsonrpc" => "2.0",
      "result" => %{
-       "block_hash" => "8z8S2zaBJAgMX5q8qhXWoZ2qgWD1RdFfFw4cZzN8iWJn",
-       "block_height" => 76720444,
+       "block_hash" => "9Bm4MVxMaQus6FcadL3UuBJJQ6BumzQFYNuezsYGejyS",
+       "block_height" => 77410756,
        "error" => "access key ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW does not exist while viewing",
        "logs" => []
      }
-   },
-   error_message: "access key ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW does not exist while viewing"
- ]}
+   }
+ }}
 ```
 
-## NearApi.AccessKeys.view_access_key_list/3
+## NearApi.RPC.AccessKeys.view_access_key_list/3
 
 Returns all access keys for a given account.
 
 ```elixir
-NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
+NearApi.RPC.AccessKeys.view_access_key("client.chainlink.testnet")
 ```
 
 ```output
@@ -160,8 +160,8 @@ NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
    "id" => "dontcare",
    "jsonrpc" => "2.0",
    "result" => %{
-     "block_hash" => "8z8S2zaBJAgMX5q8qhXWoZ2qgWD1RdFfFw4cZzN8iWJn",
-     "block_height" => 76720444,
+     "block_hash" => "HCHVFxYXxdMdsHxLrNXPiEvqMAzPWNTCANTSFABRHoLx",
+     "block_height" => 77410777,
      "nonce" => 157,
      "permission" => %{
        "FunctionCall" => %{
@@ -177,7 +177,7 @@ NearApi.AccessKeys.view_access_key("client.chainlink.testnet")
 When we specify `block_id`:
 
 ```elixir
-NearApi.AccessKeys.view_access_key(
+NearApi.RPC.AccessKeys.view_access_key(
   "client.chainlink.testnet",
   "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
 )

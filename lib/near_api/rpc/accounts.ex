@@ -1,4 +1,4 @@
-defmodule NearApi.Accounts do
+defmodule NearApi.RPC.Accounts do
   @moduledoc """
   NEAR RPC - Accounts API
   """

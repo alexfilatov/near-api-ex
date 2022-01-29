@@ -4,11 +4,13 @@ defmodule NearApi.PublicKey do
   """
   alias __MODULE__
 
+  @ed25519_curve 0
+
   use Borsh,
-    schema: %{
+    schema: [
       key_type: :u8,
-      data: :string
-    }
+      data: [32]
+    ]
 
   @typedoc """
   Type of the public key struct
@@ -22,4 +24,11 @@ defmodule NearApi.PublicKey do
     :key_type,
     :data
   ]
+
+  def from_string(encoded_key) do
+    encoded_key |> String.split(":") |> compose_key()
+  end
+
+  defp compose_key([curve, key]), do: compose_key([key])
+  defp compose_key([key]), do: %__MODULE__{key_type: @ed25519_curve, data: B58.decode58!(key)}
 end

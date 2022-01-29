@@ -42,11 +42,13 @@ defmodule NearApi.MixProject do
       {:jason, "~> 1.2"},
       {:basefiftyeight, "~> 0.1.0"},
       {:ed25519, "~> 1.3"},
+      {:borsh, "~> 0.1"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:exvcr, "~> 0.11", only: :test},
-      {:remixed_remix, ">= 0.0.0", only: :dev}
+      {:remixed_remix, ">= 0.0.0", only: :dev},
+      {:enacl, ">= 0.0.0"},
     ]
   end
 end

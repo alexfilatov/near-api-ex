@@ -1,7 +1,7 @@
-defmodule NearApi.ContractsTest do
+defmodule NearApi.RPC.ContractsTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  alias NearApi.Contracts, as: API
+  alias NearApi.RPC.Contracts, as: API
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
@@ -139,11 +139,9 @@ defmodule NearApi.ContractsTest do
 
     test "success: call_function get_status" do
       use_cassette "call_function/success_getter" do
-        args_base64 =
-          %{account_id: "status_message.yellowpie.testnet"} |> Jason.encode!() |> Base.encode64()
+        args_base64 = %{account_id: "status_message.yellowpie.testnet"} |> Jason.encode!() |> Base.encode64()
 
-        {:ok, result} =
-          API.call_function("status_message.yellowpie.testnet", "get_status", args_base64)
+        {:ok, result} = API.call_function("status_message.yellowpie.testnet", "get_status", args_base64)
 
         assert to_string(result["result"]["result"]) == "\"hello world\""
       end

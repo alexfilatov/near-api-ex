@@ -108,6 +108,13 @@ Bug reports and pull requests are welcome on GitHub at https://github.com/alexfi
 1. Fork
 2. Create Pull request
 
+## License
+
+    Copyright © 2021-present Alex Filatov <alex@alexfilatov.com>
+
+    This work is free. You can redistribute it and/or modify it under the
+    terms of the MIT License. See the LICENSE file for more details.
+
 ---
 
 Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc) and published on [HexDocs](https://hexdocs.pm). Once published, the docs can be found at <https://hexdocs.pm/near_api>.

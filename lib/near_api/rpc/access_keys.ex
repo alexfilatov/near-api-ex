@@ -1,4 +1,4 @@
-defmodule NearApi.AccessKeys do
+defmodule NearApi.RPC.AccessKeys do
   @moduledoc """
   NEAR RPC - Access Keys API
   """

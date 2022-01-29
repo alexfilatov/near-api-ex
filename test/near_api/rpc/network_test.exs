@@ -1,7 +1,7 @@
-defmodule NearApi.NetworkTest do
+defmodule NearApi.RPC.NetworkTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  alias NearApi.Network, as: API
+  alias NearApi.RPC.Network, as: API
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")

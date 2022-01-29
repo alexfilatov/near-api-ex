@@ -1,7 +1,7 @@
-defmodule NearApi.ChunkTest do
+defmodule NearApi.RPC.ChunkTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  alias NearApi.Chunk, as: API
+  alias NearApi.RPC.Chunk, as: API
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
