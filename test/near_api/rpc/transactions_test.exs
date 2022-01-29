@@ -16,7 +16,17 @@ defmodule NearApi.RPC.TransactionsTest do
     sender_id = auth.account_id
     receiver_id = "hello.mintbot.test.near"
 
-    {:ok, key} = NearApi.RPC.AccessKeys.view_access_key(sender_id, nil, auth.public_key)
+    # hardcoded access_key API response:
+    key =  %{
+      "id" => "dontcare",
+      "jsonrpc" => "2.0",
+      "result" => %{
+        "block_hash" => "AUmuuRGPnMjMgcRcMreCgNqhWGnSvfkYyHRCsCvgbFYX",
+        "block_height" => 6281,
+        "nonce" => 460000003,
+        "permission" => "FullAccess"
+      }
+    }
 
     block_hash_raw = key["result"]["block_hash"]
     nonce = key["result"]["nonce"] + 1
