@@ -48,7 +48,7 @@ defmodule NearApi.MixProject do
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:exvcr, "~> 0.11", only: :test},
       {:remixed_remix, ">= 0.0.0", only: :dev},
-      {:enacl, ">= 0.0.0"},
+      {:enacl, ">= 0.0.0"}
     ]
   end
 end
