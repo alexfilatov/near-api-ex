@@ -1,7 +1,7 @@
-defmodule NearApi.BlockTest do
+defmodule NearApi.RPC.BlockTest do
   use ExUnit.Case
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
-  alias NearApi.Block, as: API
+  alias NearApi.RPC.Block, as: API
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")

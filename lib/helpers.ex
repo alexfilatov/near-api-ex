@@ -1,8 +1,9 @@
-defmodule NearApi.Utils do
+defmodule NearApi.Helpers do
   @moduledoc """
-  NEAR API Utils module
+  NEAR API Utils module;
+  Note: Draft version, will be refactored
   """
-  alias NearApi.Errors
+  alias NearApi.RPC.Errors
 
   @doc """
   Does the actual RPC call to the NEAR API and formats output
@@ -41,6 +42,16 @@ defmodule NearApi.Utils do
 
       body ->
         {:ok, body}
+    end
+  end
+
+  defmodule Monetary do
+    @doc """
+    Convert NEAR amount into Yocto amount
+    """
+    @spec near_to_yocto(near :: integer | float) :: integer
+    def near_to_yocto(near) do
+      (near * Integer.pow(10, 24)) |> round
     end
   end
 end

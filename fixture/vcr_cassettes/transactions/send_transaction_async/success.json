@@ -1,0 +1,25 @@
+[
+  {
+    "request": {
+      "body": "{\"id\":\"dontcare\",\"jsonrpc\":\"2.0\",\"method\":\"broadcast_tx_async\",\"params\":[\"EQAAAG1pbnRib3QudGVzdC5uZWFyANWhGI6fKK+U11FqkkLqnKK0on80s7vlAnYYjv1bU8wtBAtrGwAAAAAXAAAAaGVsbG8ubWludGJvdC50ZXN0Lm5lYXKM1qWAn1FshOWVkE4eTbBCCKFNieu7nmroFx5PlbSMvAEAAAADAABQ7+LW5BobAAAAAAAAAAD1uJYnrh+nlVC3o6Em+h1rjSbSnHhnN0xN0Efcs1jaocSXKbEOXg3ivGu3shKBiWIslvND8SpsQFvrGkoFpUUP\"]}",
+      "headers": {
+        "Content-Type": "application/json"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "http://127.0.0.1:50055/"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"jsonrpc\":\"2.0\",\"result\":\"B4WJ6qKawQXrvxMRyFperpZoxHaWW7bxsa3QCtJtaStU\",\"id\":\"dontcare\"}",
+      "headers": {
+        "content-length": "89",
+        "content-type": "application/json",
+        "date": "Sat, 29 Jan 2022 02:16:38 GMT"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

@@ -105,28 +105,19 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/sandbox">
 TBD: [Livebook](#)
 
 
-## Development
-
-It is recommended to run local sandbox node for faster development and run automated tests.
-To install nearcore sandbox locally do the following from the project root:
-
-```shell
-cd bin && ./install_sandbox.sh
-```
-
-The sandbox will be installed into git-ignored directory `test/sandbox`. 
-To run sandbox node, run from the project root directory:
-
-```shell
-cd bin && ./run_sandbox.sh
-```
-
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/alexfilatov/near_api.
 
 1. Fork
 2. Create Pull request
+
+## License
+
+    Copyright © 2021-present Alex Filatov <alex@alexfilatov.com>
+
+    This work is free. You can redistribute it and/or modify it under the
+    terms of the MIT License. See the LICENSE file for more details.
 
 ---
 

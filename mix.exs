@@ -40,11 +40,14 @@ defmodule NearApi.MixProject do
     [
       {:httpoison, "~> 1.8"},
       {:jason, "~> 1.2"},
-      {:b58, "~> 1.0.2"},
+      {:basefiftyeight, "~> 0.1.0"},
+      {:ed25519, "~> 1.3"},
+      {:borsh, "~> 0.1"},
       {:credo, "~> 1.5", only: [:dev, :test], runtime: false},
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
-      {:exvcr, "~> 0.11", only: :test}
+      {:exvcr, "~> 0.11", only: :test},
+      {:remixed_remix, ">= 0.0.0", only: :dev}
     ]
   end
 end

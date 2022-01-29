@@ -28,3 +28,5 @@ near_api-*.tar
 .env
 
 test/sandbox
+/.idea/
+/.elixir_ls/
