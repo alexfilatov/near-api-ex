@@ -17,7 +17,7 @@ production*
     -   [Gas](#gas)
     -   [Protocol](#protocol)
     -   [Network](#network)
-    -   [Transactions (In Progress)](#transactions-in-progress)
+    -   [Transactions](#transactions)
     -   [Sandbox (Backlog)](#sandbox-backlog)
     
 ## Installation
@@ -88,7 +88,7 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/network">
 
 TBD: [Livebook](#)
 
-### Transactions (In Progress)
+### Transactions
 
 Send transactions and query their status.
 
