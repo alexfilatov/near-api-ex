@@ -2,7 +2,6 @@ defmodule NearApi.Action do
   @moduledoc """
   NEAR [Action](https://www.near-sdk.io/zero-to-hero/beginner/actions).
   """
-  alias __MODULE__
 
   @typedoc """
   All the details needed to encode an instruction.

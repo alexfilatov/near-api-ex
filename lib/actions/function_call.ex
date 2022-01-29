@@ -21,5 +21,5 @@ defmodule NearApi.Actions.FunctionCall do
       amount: :u128
     ]
 
-  defstruct [:action_code, :method_name, :args, :gas, :amount, action_code: 2]
+  defstruct [:method_name, :args, :gas, :amount, action_code: 2]
 end

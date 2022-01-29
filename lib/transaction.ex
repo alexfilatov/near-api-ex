@@ -24,10 +24,6 @@ defmodule NearApi.Transaction do
     ],
     enum_map: NearApi.Action.enum_map()
 
-  @typedoc """
-  Transaction struct
-  """
-
   defstruct [
     :signer_id,
     :public_key,

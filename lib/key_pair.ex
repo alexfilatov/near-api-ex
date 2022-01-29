@@ -2,7 +2,6 @@ defmodule NearApi.KeyPair do
   @moduledoc """
   Key pair functionality for Ed25519 curve: generating key pairs, encoding key pairs, signing and verifying.
   """
-  alias __MODULE__
 
   @typedoc """
   Type of the key pair struct
@@ -33,7 +32,7 @@ defmodule NearApi.KeyPair do
     encoded_secret_key |> String.split(":") |> compose_key_pair()
   end
 
-  defp compose_key_pair([curve, encoded_secret_key]), do: compose_key_pair([encoded_secret_key])
+  defp compose_key_pair([_curve, encoded_secret_key]), do: compose_key_pair([encoded_secret_key])
 
   defp compose_key_pair([encoded_secret_key]) do
     <<seed::binary-size(32), _::binary>> = B58.decode58!(encoded_secret_key)
