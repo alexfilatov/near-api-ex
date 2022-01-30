@@ -29,7 +29,8 @@ defmodule NearApi.Wallet.RequestSigninTest do
       assert decoded_query["contract_id"] == "contract.testnet"
       assert decoded_query["success_url"] == "https://success_url.com"
       assert decoded_query["failure_url"] == "https://failure_url.com"
-      assert decoded_query["methodNames[]"] == "delete" # URI cannot parse arrays from URL
+      # URI cannot parse arrays from URL
+      assert decoded_query["methodNames[]"] == "delete"
       assert String.match?(uri.query, ~r/methodNames\[\]=add&methodNames\[\]=delete/)
     end
 
