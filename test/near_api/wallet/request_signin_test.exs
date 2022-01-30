@@ -15,7 +15,7 @@ defmodule NearApi.Wallet.RequestSigninTest do
       uri = URI.parse(url)
 
       # TODO: these should go to their own test:
-      assert %NearApi.KeyPair{public_key: pk, secret_key: sk} = key_pair
+      assert %NearApi.KeyPair{public_key: pk, secret_key: _sk} = key_pair
       assert %NearApi.PublicKey{data: data, key_type: kt} = pk
       assert is_bitstring(data)
       assert kt == 0
@@ -41,7 +41,7 @@ defmodule NearApi.Wallet.RequestSigninTest do
         failure_url: "https://failure_url.com"
       }
 
-      {url, key_pair} = Subject.build_url(params, :testnet)
+      {url, _key_pair} = Subject.build_url(params, :testnet)
       uri = URI.parse(url)
 
       assert uri.host == "wallet.testnet.near.org"
@@ -62,7 +62,7 @@ defmodule NearApi.Wallet.RequestSigninTest do
         failure_url: "https://failure_url.com"
       }
 
-      {url, key_pair} = Subject.build_url(params, "https://localhost:12345")
+      {url, _key_pair} = Subject.build_url(params, "https://localhost:12345")
       uri = URI.parse(url)
 
       assert uri.host == "localhost"
