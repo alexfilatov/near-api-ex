@@ -5,7 +5,7 @@ defmodule NearApi.RPC.AccountsTest do
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
-    ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes/accounts")
+    ExVCR.Config.cassette_library_dir("test/fixture/vcr_cassettes/accounts")
   end
 
   describe ".view_account" do

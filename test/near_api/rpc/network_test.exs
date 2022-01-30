@@ -5,7 +5,7 @@ defmodule NearApi.RPC.NetworkTest do
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
-    ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes/network")
+    ExVCR.Config.cassette_library_dir("test/fixture/vcr_cassettes/network")
     :ok
   end
 

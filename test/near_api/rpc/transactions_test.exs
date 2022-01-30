@@ -5,7 +5,7 @@ defmodule NearApi.RPC.TransactionsTest do
 
   setup do
     System.put_env("NEAR_NODE_URL", "http://127.0.0.1:50055")
-    ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes/transactions")
+    ExVCR.Config.cassette_library_dir("test/fixture/vcr_cassettes/transactions")
 
     auth = %{
       account_id: "mintbot.test.near",

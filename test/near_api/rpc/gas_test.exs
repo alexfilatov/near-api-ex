@@ -5,7 +5,7 @@ defmodule NearApi.RPC.GasTest do
 
   setup do
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
-    ExVCR.Config.cassette_library_dir("fixture/vcr_cassettes/gas")
+    ExVCR.Config.cassette_library_dir("test/fixture/vcr_cassettes/gas")
     :ok
   end
 
