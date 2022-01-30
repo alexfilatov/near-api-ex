@@ -7,7 +7,7 @@ defmodule NearApi.KeyPair do
   Type of the key pair struct
   """
   @type t :: %__MODULE__{
-          public_key: String.t(),
+          public_key: NearApi.PublicKey.t(),
           secret_key: String.t()
         }
 
@@ -30,6 +30,12 @@ defmodule NearApi.KeyPair do
   """
   def from_string(encoded_secret_key) do
     encoded_secret_key |> String.split(":") |> compose_key_pair()
+  end
+
+  def from_random() do
+    {sk, pk} = Ed25519.generate_key_pair()
+
+    key_pair(B58.encode58(pk), B58.encode58(sk))
   end
 
   defp compose_key_pair([_curve, encoded_secret_key]), do: compose_key_pair([encoded_secret_key])
