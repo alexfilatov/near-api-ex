@@ -76,6 +76,6 @@ defmodule NearApi.Wallet.RequestSignin do
   defp append_method_names(query, []), do: query
 
   defp append_method_names(query, [name | rest]) do
-    append_method_names("#{query}&method_name[]=#{URI.encode(name)}", rest)
+    append_method_names("#{query}&methodNames[]=#{URI.encode(name)}", rest)
   end
 end
