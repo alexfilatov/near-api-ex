@@ -35,17 +35,21 @@ defmodule NearApi.HttpClient do
   end
 
   defp perform_call(method, payload, retry_attempt \\ 0)
+
   defp perform_call(method, payload, retry_attempt) when retry_attempt < @retry_attempts do
     params_encoded = NearApi.HttpClient.params(method, payload) |> Jason.encode!()
     recv_timeout = Application.get_env(:near_api, :recv_timeout, 50_000)
     timeout = Application.get_env(:near_api, :timeout, 50_000)
 
-    case NearApi.HttpClient.post("/", params_encoded, [], [recv_timeout: recv_timeout, timeout: timeout]) do
+    case NearApi.HttpClient.post("/", params_encoded, [], recv_timeout: recv_timeout, timeout: timeout) do
       {:ok, response} ->
         response.body
 
       {:error, %HTTPoison.Error{reason: :timeout}} ->
-        Logger.warn("#{__MODULE__}: Timeout making a transaciton call: #{inspect({method, payload})}; attempt: #{retry_attempt}")
+        Logger.warn(
+          "#{__MODULE__}: Timeout making a transaciton call: #{inspect({method, payload})}; attempt: #{retry_attempt}"
+        )
+
         perform_call(method, payload, retry_attempt + 1)
 
       error ->

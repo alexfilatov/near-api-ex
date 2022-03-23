@@ -68,7 +68,6 @@ defmodule NearApi.Transaction do
     end
   end
 
-
   def sign_and_serialise(tx, key_pair) do
     serialised_tx = borsh_encode(tx)
     serialized_tx_hash = :crypto.hash(:sha256, serialised_tx)
