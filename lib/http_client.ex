@@ -57,7 +57,7 @@ defmodule NearApi.HttpClient do
     end
   end
 
-  defp perform_call(method, payload, retry_attempt) do
+  defp perform_call(_method, _payload, _retry_attempt) do
     Logger.error("#{__MODULE__}: Aborted retrying calls to NEAR API because of timeouts")
     {:error, :timeouted_after_multiple_retries}
   end
