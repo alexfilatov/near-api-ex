@@ -47,7 +47,6 @@ defmodule NearApi.Transaction do
     account_id = from_account.account_id
 
     with {:ok, key} <- NearApi.RPC.AccessKeys.view_access_key(account_id, nil, public_key_encoded) do
-
       block_hash_raw = key["result"]["block_hash"]
       nonce = key["result"]["nonce"] + 1
 

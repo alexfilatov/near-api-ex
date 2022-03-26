@@ -40,7 +40,6 @@ defmodule NearApi.Contract do
 
     {:ok, tx} = NearApi.Transaction.create_transaction(caller_account, contract_id, [action])
 
-
     tx
     |> NearApi.Transaction.payload(caller_account.key_pair)
     |> NearApi.RPC.Transactions.send_transaction_commit()
