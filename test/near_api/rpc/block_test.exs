@@ -56,7 +56,7 @@ defmodule NearApi.RPC.BlockTest do
     test "success: changes_in_block_experimental with block_id" do
       use_cassette "changes_in_block_experimental/success_block_id" do
         block_id = "125iE9QcZjL4n34pZP8MoByevgaziz93oYV2a6W6pJUX"
-        {:ok, body} = API.changes_in_block(block_id)
+        {:ok, body} = API.changes_in_block_experimental(block_id)
         assert body["result"]["block_hash"] == block_id
         refute body["result"]["error"]
       end

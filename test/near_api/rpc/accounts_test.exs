@@ -53,7 +53,7 @@ defmodule NearApi.RPC.AccountsTest do
     test "success: account_changes with block_id" do
       use_cassette "account_changes/success_block_id" do
         block_id = "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
-        {:ok, body} = API.view_account("client.chainlink.testnet", block_id)
+        {:ok, body} = API.account_changes("client.chainlink.testnet", block_id)
         assert body["id"] == "dontcare"
         assert body["jsonrpc"] == "2.0"
         assert body["result"]["block_hash"] == block_id

@@ -1,0 +1,146 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.RPC.Accounts
+
+## Setup
+
+```elixir
+System.put_env("NEAR_PUBLIC_KEY", "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW")
+System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
+```
+
+```output
+:ok
+```
+
+## NearApi.RPC.Accounts.view_account/2
+
+Returns basic account information
+
+```elixir
+{:ok, result} = NearApi.RPC.Accounts.view_account("client.chainlink.testnet")
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "amount" => "149549153888665231000000000",
+     "block_hash" => "FCrP6mBy1gmRYfHc6wxLCR3bvjGpwqB6bGwvqvwyMAtS",
+     "block_height" => 85963480,
+     "code_hash" => "2snK55re3tXyYAPhCfv34VcCFsr6CUZYwD3G8ouWK2PP",
+     "locked" => "0",
+     "storage_paid_at" => 0,
+     "storage_usage" => 233329
+   }
+ }}
+```
+
+#### view_account with block_id
+
+```elixir
+block_id = "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5"
+{:ok, result} = NearApi.RPC.Accounts.view_account("client.chainlink.testnet", block_id)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "amount" => "149601515575877554327148640",
+     "block_hash" => "AseZCt1TxexkYcBX6hwH9KyK9pzGRYzwautpQbbqwLB5",
+     "block_height" => 68795818,
+     "code_hash" => "2snK55re3tXyYAPhCfv34VcCFsr6CUZYwD3G8ouWK2PP",
+     "locked" => "0",
+     "storage_paid_at" => 0,
+     "storage_usage" => 230747
+   }
+ }}
+```
+
+## NearApi.RPC.Accounts.view_account_changes/2
+
+Returns account changes from transactions in a given account.
+  Warning: Experimental
+
+```elixir
+{:ok, result} = NearApi.RPC.Accounts.account_changes(["client.chainlink.testnet"])
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{"block_hash" => "GnY6ty1FKjCjhLstM3BnGhHu9dzzYsKUWJ5NzVfBR7Lv", "changes" => []}
+ }}
+```
+
+#### with block_id
+
+```elixir
+block_id = "92WzwGkKBLJRbrgn4dpGbTHePm3oxZ6m9MJUGj1JvNGP"
+NearApi.RPC.Accounts.account_changes(["client.chainlink.testnet"], block_id)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "92WzwGkKBLJRbrgn4dpGbTHePm3oxZ6m9MJUGj1JvNGP",
+     "changes" => [
+       %{
+         "cause" => %{
+           "tx_hash" => "GfYfcvYHj62EooN9NJgCic4yQ1P6K15ai3NnAyihRi1R",
+           "type" => "transaction_processing"
+         },
+         "change" => %{
+           "account_id" => "client.chainlink.testnet",
+           "amount" => "149370931441037299827148640",
+           "code_hash" => "2snK55re3tXyYAPhCfv34VcCFsr6CUZYwD3G8ouWK2PP",
+           "locked" => "0",
+           "storage_paid_at" => 0,
+           "storage_usage" => 233329
+         },
+         "type" => "account_update"
+       },
+       %{
+         "cause" => %{
+           "receipt_hash" => "4oYz8nUUPYsjr4n5YXcHAQzCcMkHnNXhYQs9UZuwAjpK",
+           "type" => "receipt_processing"
+         },
+         "change" => %{
+           "account_id" => "client.chainlink.testnet",
+           "amount" => "149370931441037299827148640",
+           "code_hash" => "2snK55re3tXyYAPhCfv34VcCFsr6CUZYwD3G8ouWK2PP",
+           "locked" => "0",
+           "storage_paid_at" => 0,
+           "storage_usage" => 233329
+         },
+         "type" => "account_update"
+       },
+       %{
+         "cause" => %{
+           "receipt_hash" => "4oYz8nUUPYsjr4n5YXcHAQzCcMkHnNXhYQs9UZuwAjpK",
+           "type" => "action_receipt_gas_reward"
+         },
+         "change" => %{
+           "account_id" => "client.chainlink.testnet",
+           "amount" => "149371035889992174527148640",
+           "code_hash" => "2snK55re3tXyYAPhCfv34VcCFsr6CUZYwD3G8ouWK2PP",
+           "locked" => "0",
+           "storage_paid_at" => 0,
+           "storage_usage" => 233329
+         },
+         "type" => "account_update"
+       }
+     ]
+   }
+ }}
+```
