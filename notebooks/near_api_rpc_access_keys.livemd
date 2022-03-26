@@ -38,12 +38,12 @@ NearApi.RPC.AccessKeys.view_access_key("client.chainlink.testnet")
    "id" => "dontcare",
    "jsonrpc" => "2.0",
    "result" => %{
-     "block_hash" => "HRNNsneNW2XgMMpknchzjJH9vVhgv9tbW3Tna2Q2WhoD",
-     "block_height" => 77492501,
-     "nonce" => 157,
+     "block_hash" => "GeBZuqFJZ4h6F4VrUgZq2nXLMCkk9t7eyMsT5mrYM2WC",
+     "block_height" => 85946674,
+     "nonce" => 184,
      "permission" => %{
        "FunctionCall" => %{
-         "allowance" => "18074888454317128100000000",
+         "allowance" => "17926238097406453100000000",
          "method_names" => ["get_token_price"],
          "receiver_id" => "client.chainlink.testnet"
        }

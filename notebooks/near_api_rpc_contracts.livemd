@@ -1,0 +1,164 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.RPC.Contracts
+
+## Setup
+
+```elixir
+System.put_env("NEAR_PUBLIC_KEY", "ed25519:H9k5eiU4xXS3M4z8HzKJSLaZdqGdGwBG49o7orNC4eZW")
+System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
+```
+
+```output
+:ok
+```
+
+## NearApi.RPC.Contracts.view_code/3
+
+Returns the contract code (`Wasm` binary) deployed to the account.
+
+Please note that the returned code will be encoded in `base64`.
+
+```elixir
+{:ok, result} = NearApi.RPC.Contracts.view_code("client.chainlink.testnet")
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "DmWvStE5wZXk9VTp3mwqQCZayRm3EDmwg6QpfL7L2Ghw",
+     "block_height" => 85947058,
+     "code_base64" => "AGFzbQEAAAABiwRDYAF/AGAAAX9gAn9/AX9gA39+fgBgBH9+fn4BfmACf34AYAR/fn5+AGADf35+AX5gCH9+fn5+fn5+AGACf34BfmAGf35+fn5+AX5gBX9+fn5+AGAKf35+fn5+fn5+fgBgAn9/AGADf39/AX9gAX8BfmACfn4AYAF+AX5gAX4AYAABfmADfn5+AGAAAGAIfn5+fn5+fn4BfmAJfn5+fn5+fn5+AX5gAn5+AX5gA35+fgF+YAd+fn5+fn5+AGAEfn5+fgBgCX5+fn5+fn5+fgBgBX5+fn5+AX5gA39/fwBgAX8Bf2AEf39/fgBgBX9/f35/AGAFf39/f38AYAR/f39/AGAFf39/f38Bf2AGf39/f39/AGAEf39/fwF/YAJ/fwF+YAV/f35/fwBgA39/fgBgBH9/fn8AYAR/f35+AGAEf35+fwF+YAR/fn9/AX9gAn9+AX9gD39+fn9/f35+fn5/f35+fgBgCX9+fn5+fn5+fgF+YAp/fn5+fn5+fn5+AX5gB39/f39/f38AYAN/f38BfmACfn8BfmADfn9/AGAIfn9/f39+fn4AYAR+fn5/AGADfn9+AGAIfn9+fn5/f38AYAJ+fwBgB39/f39+fn4AYAR/fH9/AX9gBn9/f39/fwF/YAd/f39/f39/AX9gA35/fwF/YAR+fn9/AX9gBH9+fn8AYAZ/fn5+fn8AApcJMANlbnYNcmVhZF9yZWdpc3RlcgAQA2VudgxyZWdpc3Rlcl9sZW4AEQNlbnYSY3VycmVudF9hY2NvdW50X2lkABIDZW52EXNpZ25lcl9hY2NvdW50X2lkABIDZW52EXNpZ25lcl9hY2NvdW50X3BrABIDZW52FnByZWRlY2Vzc29yX2FjY291bnRfaWQAEgNlbnYFaW5wdXQAEgNlbnYLYmxvY2tfaW5kZXgAEwNlbnYPYmxvY2tfdGltZXN0YW1wABMDZW52DGVwb2NoX2hlaWdodAATA2Vudg1zdG9yYWdlX3VzYWdlABMDZW52D2FjY291bnRfYmFsYW5jZQASA2VudhZhY2NvdW50X2xvY2tlZF9iYWxhbmNlABIDZW52EGF0dGFjaGVkX2RlcG9zaXQAEgNlbnYLcHJlcGFpZF9nYXMAEwNlbnYIdXNlZF9nYXMAEwNlbnYLcmFuZG9tX3NlZWQAEgNlbnYGc2hhMjU2ABQDZW52CWtlY2NhazI1NgAUA2VudglrZWNjYWs1MTIAFANlbnYMdmFsdWVfcmV0dXJuABADZW52BXBhbmljABUDZW52CnBhbmljX3V0ZjgAEANlbnYIbG9nX3V0ZjgAEANlbnYJbG9nX3V0ZjE2ABADZW52DnByb21pc2VfY3JlYXRlABYDZW52DHByb21pc2VfdGhlbgAXA2Vudgtwcm9taXNlX2FuZAAYA2VudhRwcm9taXNlX2JhdGNoX2NyZWF0ZQAYA2VudhJwcm9taXNlX2JhdGNoX3RoZW4AGQNlbnYjcHJvbWlzZV9iYXRjaF9hY3Rpb25fY3JlYXRlX2FjY291bnQAEgNlbnYkcHJvbWlzZV9iYXRjaF9hY3Rpb25fZGVwbG95X2NvbnRyYWN0ABQDZW52InByb21pc2VfYmF0Y2hfYWN0aW9uX2Z1bmN0aW9uX2NhbGwAGgNlbnYdcHJvbWlzZV9iYXRjaF9hY3Rpb25fdHJhbnNmZXIAEANlbnYacHJvbWlzZV9iYXRjaF9hY3Rpb25fc3Rha2UAGwNlbnYtcHJvbWlzZV9iYXRjaF9hY3Rpb25fYWRkX2tleV93aXRoX2Z1bGxfYWNjZXNzABsDZW52L3Byb21pc2VfYmF0Y2hfYWN0aW9uX2FkZF9rZXlfd2l0aF9mdW5jdGlvbl9jYWxsABwDZW52H3Byb21pc2VfYmF0Y2hfYWN0aW9uX2RlbGV0ZV9rZXkAFANlbnYjcHJvbWlzZV9iYXRjaF9hY3Rpb25fZGVsZXRlX2FjY291bnQAFANlbnYVcHJvbWlzZV9yZXN1bHRzX2NvdW50ABMDZW52DnByb21pc2VfcmVzdWx0ABgDZW52DnByb21pc2VfcmV0dXJuABIDZW52DXN0b3JhZ2Vfd3JpdGUAHQNlbnYMc3RvcmFnZV9yZWFkABkDZW52DnN0b3JhZ2VfcmVtb3ZlABkDZW52D3N0b3JhZ2VfaGFzX2tleQAYA2Vudg92YWxpZGF0b3Jfc3Rha2UAFANlbnYVdmFsaWRhdG9yX3RvdGFsX3N0YWtlABIDvAa6Bh4eAB4eDQ0NDQAAHg0eDR4NHg0eDQ0fAAAADQ0NDQIODQACAh8ADR8NHiANIQAhACEeIR8fDSEOHx8fIiINAAANIw0eDQAeHh4NHh4OHg0NDQINAgICAgICAgICAgICAg0ADR4AAAAAAAAAAAAAHgAAAAAAAAAAAAAAAA4kIiUiIiUNAA0NHiIfHg0NDR4eDR4NHg0NHg0eDR4NDgINAiMNDgIOAiYOJgIeHyMiHgANAAANHg0eDR4NHg0eDQ0fHw0NDR4NACUjDx4eJygjDQ0eIw0jKSkoKQ0eKSkpDR4qDQ0nJw0CJw0nKw0qKiMsHx8AAA0lJSUlJSMtJw0iIg0uHh4eAh4mAi8CAwkFBQUFBQ8PDw8FBQUPDwUGBgYDAAMDAzAxBwcEBQYIAwsLDAYGDwcFCgQEBwYFFRUVFRUCHiYCIyIeDSMeIyMlAB4CDQ0PHw0CAgICAiYeAgAAAAAAAAAAAB4AAAAAAB4mAA0AMh4NDSImHgAfAh4NAg4fFR4fHwIADQ0jDR4jHiUVFQAjIiMlHg0eAA0ODg0NDg0CHx8eHh4eIwIfHwINDR4NHh4CAAAjAh8kDiMCAgIeHgAAHh8CHwICDQ0CAAAYJw0eDR4NAAAAJwANHg0eHjMNAA0nMx4NDTMNAgICDQAADQ0ADQ0AAAAAAB4AAA8AAAAAAAAAAB8NHwINHiUiHh4NHx4NHg0eIx4NDSMiDSMiDQ0VBQUAAAAnDzQSNTYUNzg5OjoSDQ0mHgANHjsAAAEDAwINHh4PHgAAFQ0NAh4VFR8NAgICDh4NIx4NDR8NDQ8fAgIeAgAAAAAeMx4eIwANDQIeAg4eFR4VDR8eAA0eIx4jJRUVACMiIw0NHgAADScPDw8CAgICAh4AAAAfAgINAg4CDQICDQINAgICAiMVDQ0NACMNDQ0NDQEfDSMNHwICAgACDQIODQ0VDQ0VAg0CAgAeHgIeHg4iAg0CDiMjIiMiAiMCDgICDwICJB4CIgIfHwICAh8OIx8OHx4OHzwCPAICDgICAj0mAg4CHx8jIw0CDh8+AA4CAiICHgICAgIjHgI/AgICAgJAAgICAgICAgJBQQtCCw4ODg4EBwFwAcsBywEFAwEAEQYZA38BQYCAwAALfwBB4LDBAAt/AEHgsMEACweAAQgGbWVtb3J5AgADbmV3AOoCD2dldF90b2tlbl9wcmljZQDrAhR0b2tlbl9wcmljZV9jYWxsYmFjawDsAhFnZXRfcmVjZWl2ZWRfdmFscwDtAhBnZXRfcmVjZWl2ZWRfdmFsAO4CCl9fZGF0YV9lbmQDAQtfX2hlYXBfYmFzZQMCCZsDAQBBAQvKAewDjgGPAZEFkQaEA8wG+wToBZQBzwOaAdoFqAHaBpYB0QafAfUDnAHgBqIBiQGdAYoBpAGHAZcBjAGZAYMBmAGFAaUBugK7ArwCvQK+Ar8CwALBAsICwwLEAsUCxgLHAsgCyQLKAssCzALNAs4CzwLQAtEC0gLTAtQC1QLWAtcC2ALZAtoC2wLcAt0C3gLfAuAC4QLiAuMC5ALlAuYC5wLoAukCoAKfAqEBgwW1BuEDggWFA7MDhwOTA4ADgQOCA9cF/wLYBdkFlwOtA6kDrAOaA5YD1AWUA+ID5APlA+YD8APqA+8D6wOaBOwEsgSZBrAEmAaqBK8EsQSuBP4F7QSzBJ8EoQSiBPcE+gT5BPYE9ATABs0G1wbTBscGkAWUBY0FjgWPBYwFlwWjBaAFogWWBcMF1gbTBd4FyAXQBc0FzwXABcUFxgXJBdEFygXjBeQFwQXlBeYFvwXE" <> ...,
+     "hash" => "2snK55re3tXyYAPhCfv34VcCFsr6CUZYwD3G8ouWK2PP"
+   }
+ }}
+```
+
+```elixir
+{:ok, result} = NearApi.RPC.Contracts.view_code("client.chainlink.testnet")
+binary = Base.decode64!(result["result"]["code_base64"])
+```
+
+```output
+<<0, 97, 115, 109, 1, 0, 0, 0, 1, 139, 4, 67, 96, 1, 127, 0, 96, 0, 1, 127, 96, 2, 127, 127, 1, 127,
+  96, 3, 127, 126, 126, 0, 96, 4, 127, 126, 126, 126, 1, 126, 96, 2, 127, 126, 0, 96, 4, 127, 126,
+  126, ...>>
+```
+
+## NearApi.RPC.Contracts.view_state/3
+
+Returns the state (key value pairs) of a contract based on the key prefix (base64 encoded).
+  Pass an empty string for `prefix_base64` if you would like to return the entire state.
+  Please note that the returned state will be base64 encoded as well.
+
+```elixir
+{:ok, result} = NearApi.RPC.Contracts.view_state("yellowpie.testnet")
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "13LSzQNvNpYA9nXspgS2x5jMzoxh6P3Bk57fUrAft4uu",
+     "block_height" => 85947187,
+     "proof" => [],
+     "values" => [
+       %{
+         "key" => "U1RBVEU=",
+         "proof" => [],
+         "value" => "AQAAAGEAgMakfo0DAAAAAAAAAAAAfQAAAAAAAAABAAAAbQ=="
+       },
+       %{
+         "key" => "YREAAAB5ZWxsb3dwaWUudGVzdG5ldA==",
+         "proof" => [],
+         "value" => "7X/GpH6NAwAAAAAAAAAAAA=="
+       },
+       %{
+         "key" => "YRUAAABib2IueWVsbG93cGllLnRlc3RuZXQ=",
+         "proof" => [],
+         "value" => "EwAAAAAAAAAAAAAAAAAAAA=="
+       },
+       %{"key" => "bGFzdF9zZW5kZXI=", "proof" => [], "value" => "eWVsbG93cGllMy50ZXN0bmV0"},
+       %{
+         "key" => "bQ==",
+         "proof" => [],
+         "value" => "CAAAAGZ0LTEuMC4wDQAAAFhPMTB4MTAgVG9rZW4EAAAAWE8xMAAAAAg="
+       }
+     ]
+   }
+ }}
+```
+
+## NearApi.RPC.Contracts.data_changes/3
+
+Returns the state change details of a contract based on the key prefix (encoded to base64).
+  Pass an empty string for this param if you would like to return all state changes.
+  Warning: Experimental
+
+```elixir
+{:ok, result} = NearApi.RPC.Contracts.data_changes(["yellowpie.testnet"])
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{"block_hash" => "AiQAxyu7DCz77WaaKxkJp6qjz8hKnzRUg1CYZTVKRZXd", "changes" => []}
+ }}
+```
+
+## NearApi.RPC.Contracts.contract_code_changes/2
+
+Returns code changes made when deploying a contract. Change is returned is a base64 encoded WASM file.
+  Warning: Experimental
+
+```elixir
+{:ok, result} = NearApi.RPC.Contracts.contract_code_changes(["yellowpie.testnet"])
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{"block_hash" => "GmGqe45das8DbikKyu7xqxH8As9Mzc7CxXcXr2tVdjHn", "changes" => []}
+ }}
+```
+
+## NearApi.RPC.Contracts.call_function/3
+
+Allows you to call a contract method as a view function.
+
+```elixir
+args_base64 =
+  %{account_id: "status_message.yellowpie.testnet"}
+  |> Jason.encode!()
+  |> Base.encode64()
+
+{:ok, result} =
+  NearApi.RPC.Contracts.call_function(
+    "status_message.yellowpie.testnet",
+    "get_status",
+    args_base64
+  )
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "block_hash" => "8yq3jXjJ6BLazS4aPSqnqKE21NcakH1PbX8TDTvdfuiY",
+     "block_height" => 85947809,
+     "logs" => [],
+     "result" => '"hello world"'
+   }
+ }}
+```
