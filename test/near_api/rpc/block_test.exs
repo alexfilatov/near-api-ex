@@ -44,7 +44,7 @@ defmodule NearApi.RPC.BlockTest do
   describe ".changes_in_block_experimental" do
     test "success: changes_in_block_experimental with finality: final" do
       use_cassette "changes_in_block_experimental/success" do
-        {:ok, body} = API.changes_in_block()
+        {:ok, body} = API.changes_in_block_experimental()
         assert body["id"] == "dontcare"
         assert body["jsonrpc"] == "2.0"
         assert body["result"]["block_hash"]

@@ -1,0 +1,129 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.RPC.Chunk
+
+## Setup
+
+```elixir
+System.put_env("NEAR_NODE_URL", "https://rpc.mainnet.near.org")
+```
+
+```output
+:ok
+```
+
+## NearApi.RPC.Chunk.chunk/3
+
+### Get chunk by block_id and shard_id
+
+```elixir
+{:ok, result} = NearApi.RPC.Chunk.chunk(nil, "ACChWowCDGLwzaDCePvn9QLqGstXkRdorzwr7CdS6CUP", 1)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "author" => "d1.poolv1.near",
+     "header" => %{
+       "balance_burnt" => "321274141389900000000",
+       "chunk_hash" => "2Tdkh95gGgyJX4Je1HJgYW1gA34cgQMkeXgw1eHgbHnH",
+       "encoded_length" => 161,
+       "encoded_merkle_root" => "GbmohBwQLmpCxN3rZYS1k9QuSxEnQNCscULVBgav64UU",
+       "gas_limit" => 1000000000000000,
+       "gas_used" => 3548583226903,
+       "height_created" => 62202319,
+       "height_included" => 62202319,
+       "outcome_root" => "Em7B7q8YZ5D4zEWXhm8vajWpY6AiE8A8WjGiqHzuMQHt",
+       "outgoing_receipts_root" => "vEh7kWMsECsToNhJMQpwvh13LwXhsYmUFR9X7z7Lr5Z",
+       "prev_block_hash" => "CS9SFpSJUi7FvGwb6Lb6FTXdWKjaoqkhQBSj6oBUSP4U",
+       "prev_state_root" => "8d9PrqUktsb4KEgdCVAuWccER6kCarVjKzYcSYMgexEB",
+       "rent_paid" => "0",
+       "shard_id" => 1,
+       "signature" => "ed25519:5B5E9QXnfofyPcoafVVy9o4caFhrCvixUWywnWS1f6DdejbeZWbKUhe6KgCfEqkoUGqCkwKviqtk3rbf3U9GrLgj",
+       "tx_root" => "11111111111111111111111111111111",
+       "validator_proposals" => [],
+       "validator_reward" => "0"
+     },
+     "receipts" => [
+       %{
+         "predecessor_id" => "system",
+         "receipt" => %{
+           "Action" => %{
+             "actions" => [%{"Transfer" => %{"deposit" => "188675485537450605458512"}}],
+             "gas_price" => "0",
+             "input_data_ids" => [],
+             "output_data_receivers" => [],
+             "signer_id" => "relay.aurora",
+             "signer_public_key" => "ed25519:9crNfjpieU1ZLhLWR7yT7JTyoxgjdn5iWG6dTNG8Cmu7"
+           }
+         },
+         "receipt_id" => "4sBZQXk72J9bixWqw6xo7g6DA2KB672fqCf9sDAdPzkn",
+         "receiver_id" => "relay.aurora"
+       }
+     ],
+     "transactions" => []
+   }
+ }}
+```
+
+### Get chunk by chunk_id
+
+<!-- livebook:{"break_markdown":true} -->
+
+Returns details of a specific chunk. You can run a block details query to get a valid chunk hash.
+
+```elixir
+{:ok, result} = NearApi.RPC.Chunk.chunk("2Tdkh95gGgyJX4Je1HJgYW1gA34cgQMkeXgw1eHgbHnH")
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "author" => "d1.poolv1.near",
+     "header" => %{
+       "balance_burnt" => "321274141389900000000",
+       "chunk_hash" => "2Tdkh95gGgyJX4Je1HJgYW1gA34cgQMkeXgw1eHgbHnH",
+       "encoded_length" => 161,
+       "encoded_merkle_root" => "GbmohBwQLmpCxN3rZYS1k9QuSxEnQNCscULVBgav64UU",
+       "gas_limit" => 1000000000000000,
+       "gas_used" => 3548583226903,
+       "height_created" => 62202319,
+       "height_included" => 62202319,
+       "outcome_root" => "Em7B7q8YZ5D4zEWXhm8vajWpY6AiE8A8WjGiqHzuMQHt",
+       "outgoing_receipts_root" => "vEh7kWMsECsToNhJMQpwvh13LwXhsYmUFR9X7z7Lr5Z",
+       "prev_block_hash" => "CS9SFpSJUi7FvGwb6Lb6FTXdWKjaoqkhQBSj6oBUSP4U",
+       "prev_state_root" => "8d9PrqUktsb4KEgdCVAuWccER6kCarVjKzYcSYMgexEB",
+       "rent_paid" => "0",
+       "shard_id" => 1,
+       "signature" => "ed25519:5B5E9QXnfofyPcoafVVy9o4caFhrCvixUWywnWS1f6DdejbeZWbKUhe6KgCfEqkoUGqCkwKviqtk3rbf3U9GrLgj",
+       "tx_root" => "11111111111111111111111111111111",
+       "validator_proposals" => [],
+       "validator_reward" => "0"
+     },
+     "receipts" => [
+       %{
+         "predecessor_id" => "system",
+         "receipt" => %{
+           "Action" => %{
+             "actions" => [%{"Transfer" => %{"deposit" => "188675485537450605458512"}}],
+             "gas_price" => "0",
+             "input_data_ids" => [],
+             "output_data_receivers" => [],
+             "signer_id" => "relay.aurora",
+             "signer_public_key" => "ed25519:9crNfjpieU1ZLhLWR7yT7JTyoxgjdn5iWG6dTNG8Cmu7"
+           }
+         },
+         "receipt_id" => "4sBZQXk72J9bixWqw6xo7g6DA2KB672fqCf9sDAdPzkn",
+         "receiver_id" => "relay.aurora"
+       }
+     ],
+     "transactions" => []
+   }
+ }}
+```

@@ -20,9 +20,9 @@ defmodule NearApi.RPC.Block do
   You can also use `finality` param to return latest block details.
   Warning: Experimental!
   """
-  @spec changes_in_block(block_id :: String.t(), finality :: String.t()) ::
+  @spec changes_in_block_experimental(block_id :: String.t(), finality :: String.t()) ::
           {:ok, body :: map} | NearApi.RPC.Errors.t()
-  def changes_in_block(block_id \\ nil, finality \\ "final") do
+  def changes_in_block_experimental(block_id \\ nil, finality \\ "final") do
     payload = payload_block(block_id, finality)
     api_call_method(payload, "EXPERIMENTAL_changes_in_block")
   end
