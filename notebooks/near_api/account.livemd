@@ -1,0 +1,130 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.Account
+
+## Setup
+
+```elixir
+System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
+
+# FullAccess key of the sender account:
+public_key = "ed25519:BSKK2pFrGhbYQk14TT1hM3QDTXmg9KYSDSQcEzXrg8UV"
+
+secret_key =
+  "ed25519:zet4EX2cnVpjm3WorqY1yivD5ActGvTwt3aTVaehLrf8gnjFRBfFcta4DBxyLSRhj5RETvmWgJswvA7AaKiwb1P"
+
+account_id = "mintbot.testnet"
+
+key_pair = NearApi.KeyPair.key_pair(public_key, secret_key)
+sender_account = NearApi.Account.build_account(account_id, key_pair)
+```
+
+```output
+%NearApi.Account{
+  account_id: "mintbot.testnet",
+  key_pair: %NearApi.KeyPair{
+    public_key: %NearApi.PublicKey{
+      data: <<155, 17, 23, 250, 248, 196, 189, 10, 63, 35, 55, 78, 160, 218, 218, 241, 252, 154, 27,
+        162, 201, 153, 143, 56, 203, 38, 110, 247, 187, 195, 96, 222>>,
+      key_type: 0
+    },
+    secret_key: "zet4EX2cnVpjm3WorqY1yivD5ActGvTwt3aTVaehLrf8gnjFRBfFcta4DBxyLSRhj5RETvmWgJswvA7AaKiwb1P"
+  }
+}
+```
+
+## NearApi.Account.send_money/3
+
+In order to send token from one NEAR wallet to another NEAR wallet you need to have a [FullAccess key](https://docs.near.org/docs/videos/accounts-keys#part-2---generating-and-adding-a-key-2fa-and-the-multisig-contract).
+
+<!-- livebook:{"break_markdown":true} -->
+
+#### Success
+
+```elixir
+amount = NearApi.Helpers.Monetary.near_to_yocto(0.5)
+receiver_wallet = "yellowpie.testnet"
+{:ok, result} = NearApi.Account.send_money(sender_account, receiver_wallet, amount)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "receipts_outcome" => [
+       %{
+         "block_hash" => "5JeyzJRwmaaBRvrZ1ueecqjMXNdUUcp1s1DAwgPwfPsS",
+         "id" => "AR4yH7mqQyjuz4iKcRHQjrJcyiVFGa6eS8gaPPHBguiT",
+         "outcome" => %{
+           "executor_id" => "yellowpie.testnet",
+           "gas_burnt" => 223182562500,
+           "logs" => [],
+           "metadata" => %{"gas_profile" => [], "version" => 1},
+           "receipt_ids" => ["23rMmUni972d7tVbB7VX4w4qYw2uSETWSh3RwyWf7ANN"],
+           "status" => %{"SuccessValue" => ""},
+           "tokens_burnt" => "22318256250000000000"
+         },
+         "proof" => [
+           %{"direction" => "Right", "hash" => "FMd64Czhy93RyRjLu1Rtkcma3THVY8UQjdPUPaNdQwFn"},
+           %{"direction" => "Right", "hash" => "AT1NiJvpHEbQ9SKmcto7JmRds6PcF46sZh5kiHtES1uq"},
+           %{"direction" => "Left", "hash" => "A6LgZMKCFLxbaCMEKe6R7x4LYjJgBJ6wcRE2uuksC42c"},
+           %{"direction" => "Right", "hash" => "9UXdBxcoKrzdu8HChosmPhStDThqkYujae7ydMjhTtft"},
+           %{"direction" => "Right", "hash" => "DmYogP4MF1AhU9mo9XvRHfvACGqxqsv481rAKrGxB81x"}
+         ]
+       },
+       %{
+         "block_hash" => "GAnb2TdYFE4tsegH6KSZiqDmoihxkmJD7mT4u98VoZ21",
+         "id" => "23rMmUni972d7tVbB7VX4w4qYw2uSETWSh3RwyWf7ANN",
+         "outcome" => %{
+           "executor_id" => "mintbot.testnet",
+           "gas_burnt" => 223182562500,
+           "logs" => [],
+           "metadata" => %{"gas_profile" => [], "version" => 1},
+           "receipt_ids" => [],
+           "status" => %{"SuccessValue" => ""},
+           "tokens_burnt" => "0"
+         },
+         "proof" => [
+           %{"direction" => "Left", "hash" => "EEsJ8tBxAf4i3DZ1Nrb5RgiEdBJuGmYS9iT7E5rbZvdG"},
+           %{"direction" => "Right", "hash" => "Chv5U7khqHtGDSAxLuzcJyeKMsAYUM9tDRH7y9uDcWnz"},
+           %{"direction" => "Right", "hash" => "HuRemNgwAwszn1tngTMvf77bjyktn3k7gVDphqxBkTsR"},
+           %{"direction" => "Right", "hash" => "DfneHVxv7n8V29vyuYi6kJ9PNCGqSQNPMBHKQ1E6zhzH"},
+           %{"direction" => "Left", "hash" => "MENbPFGFFdxNkeq6YuXNh1VYkRK429mbzZ5qfQ91D4N"}
+         ]
+       }
+     ],
+     "status" => %{"SuccessValue" => ""},
+     "transaction" => %{
+       "actions" => [%{"Transfer" => %{"deposit" => "499999999999999991611392"}}],
+       "hash" => "9j8FysQdpxFz6MnVpGZW5FRFCZhVS4unnRcNPtcrmxPJ",
+       "nonce" => 85460152000021,
+       "public_key" => "ed25519:BSKK2pFrGhbYQk14TT1hM3QDTXmg9KYSDSQcEzXrg8UV",
+       "receiver_id" => "yellowpie.testnet",
+       "signature" => "ed25519:5oR9GSE6QtUwxkM4zJepEhPDNciMefsCmVZdhxUKSCzcsoUroZ5xUuBpKdeifHUQ8qgrwKDhhJSkg4DVeSere1Z9",
+       "signer_id" => "mintbot.testnet"
+     },
+     "transaction_outcome" => %{
+       "block_hash" => "CMog2kvxPJBjmKW5jZp9TuvLzxM3vXV5TkLBp9LbnPRR",
+       "id" => "9j8FysQdpxFz6MnVpGZW5FRFCZhVS4unnRcNPtcrmxPJ",
+       "outcome" => %{
+         "executor_id" => "mintbot.testnet",
+         "gas_burnt" => 223182562500,
+         "logs" => [],
+         "metadata" => %{"gas_profile" => nil, "version" => 1},
+         "receipt_ids" => ["AR4yH7mqQyjuz4iKcRHQjrJcyiVFGa6eS8gaPPHBguiT"],
+         "status" => %{"SuccessReceiptId" => "AR4yH7mqQyjuz4iKcRHQjrJcyiVFGa6eS8gaPPHBguiT"},
+         "tokens_burnt" => "22318256250000000000"
+       },
+       "proof" => [
+         %{"direction" => "Right", "hash" => "7SqxXWhzHyTnW7Fx8xrdncx6ezLCLTqUMEcZ6Crx66se"},
+         %{"direction" => "Right", "hash" => "EL2p8E4v2S3fS6rV1mYYNJD9EsALMLR756aYydQ9XJPw"},
+         %{"direction" => "Left", "hash" => "Grz9gtEE9sWz2RgWfQVTQyNqraymceEg1jMHD6oQAxwq"},
+         %{"direction" => "Right", "hash" => "FKs2RYaqdafs6tgbKHmzYB4AZPcALNnCUhqVm11uAsZu"},
+         %{"direction" => "Right", "hash" => "5arWNffX9pzZv4TxLJXU4HQXut7kctKa2bjrMhveeiY6"}
+       ]
+     }
+   }
+ }}
+```

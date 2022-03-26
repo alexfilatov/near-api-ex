@@ -26,9 +26,9 @@ defmodule NearApi.ContractTest do
 
   setup do
     auth = %{
-      account_id: "yellowpie.testnet",
-      public_key: "ed25519:EgQang5jVZga1FJFydNjkVFh7EN4btRHujRgJYzHkjbT",
-      secret_key: "ed25519:9A7Np1hMKbBqroDpu2wWGQiFuiedsxg8uAGvx43pvyXo"
+      account_id: "near_api.mintbot2.testnet",
+      public_key: "ed25519:7dMJT6gdhELZzhfNpDQFcrAb2WTbxTJqXf6MjQnScYnU",
+      secret_key: "ed25519:32zmeQ8SGtcYL6PTeSiC7qt9dBKCpTaag72fqm3FpssartVijR7uRy6ytJcqFP8mhhXAkGuYY84Hn67r3deo4ZMJ"
     }
 
     System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")

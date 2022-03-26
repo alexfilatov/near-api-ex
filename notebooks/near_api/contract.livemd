@@ -1,0 +1,144 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.Contract
+
+## Setup
+
+```elixir
+System.put_env("NEAR_NODE_URL", "https://rpc.testnet.near.org")
+
+# FullAccess key of the sender account:
+public_key = "ed25519:iyDKRpjoscGsm4xtWzsh6NcaS4ujm3MLGhDw8EjXDsk"
+
+secret_key = "ed25519:5yPGSe9VgCPvunjkoEgkqiNjnxV6Qjq7HveAi8UjWaiA"
+
+account_id = "mintbot2.testnet"
+
+key_pair = NearApi.KeyPair.key_pair(public_key, secret_key)
+caller_account = NearApi.Account.build_account(account_id, key_pair)
+
+params = %{
+  token_id: "unique_id",
+  receiver_id: caller_account.account_id,
+  metadata: %{
+    title: "NFT for #{caller_account.account_id}",
+    description: "NFT for #{caller_account.account_id} by Mintbot",
+    media: "https://ipfs.io/ipfs/bafkreibwqtadnc2sp4dsl2kzd4jzal4dvyj5mlzs2ajsg6dmxlkuv5a65e",
+    copies: 1
+  }
+}
+
+{:ok, result} =
+  NearApi.Contract.call(caller_account, "near_api.mintbot2.testnet", "nft_mint", params)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "receipts_outcome" => [
+       %{
+         "block_hash" => "Dt1DyBawneVoj1wxGdnQw9WJQja3YrrUFyajb7ULEQpt",
+         "id" => "7agVUMmXPEqC9knL2AMQWHJnEEV9XZT7KGVS1jjtdjTL",
+         "outcome" => %{
+           "executor_id" => "near_api.mintbot2.testnet",
+           "gas_burnt" => 2428517994378,
+           "logs" => [],
+           "metadata" => %{"gas_profile" => [], "version" => 1},
+           "receipt_ids" => ["5ckjzZJ8Vd7BMBCwzQZUatkubBUs3dr9kJCMkdYrc1ns"],
+           "status" => %{
+             "Failure" => %{
+               "ActionError" => %{
+                 "index" => 0,
+                 "kind" => %{
+                   "FunctionCallError" => %{
+                     "CompilationError" => %{
+                       "CodeDoesNotExist" => %{"account_id" => "near_api.mintbot2.testnet"}
+                     }
+                   }
+                 }
+               }
+             }
+           },
+           "tokens_burnt" => "242851799437800000000"
+         },
+         "proof" => [
+           %{"direction" => "Right", "hash" => "htP4NgVpjfhCkQMZDU2DhsbzEjoCbC5zQtw9aPzD9XD"},
+           %{"direction" => "Left", "hash" => "7rF4jEmggwoE95e7ZKQB2hPp2ywnDputbEzf6Fe7wTSx"},
+           %{"direction" => "Right", "hash" => "3dmwLrUQMh8vWvsW1FwFQKtoDwV9HZB6FdobhcAstGw1"}
+         ]
+       },
+       %{
+         "block_hash" => "GooVt56t44Jea7sEJVBP2jq2i7QsyiwajwkthMToPGMc",
+         "id" => "5ckjzZJ8Vd7BMBCwzQZUatkubBUs3dr9kJCMkdYrc1ns",
+         "outcome" => %{
+           "executor_id" => "mintbot2.testnet",
+           "gas_burnt" => 223182562500,
+           "logs" => [],
+           "metadata" => %{"gas_profile" => [], "version" => 1},
+           "receipt_ids" => [],
+           "status" => %{"SuccessValue" => ""},
+           "tokens_burnt" => "0"
+         },
+         "proof" => [
+           %{"direction" => "Left", "hash" => "3QNvj4Tggtaa1BxNWEpcncvVwt8UFEFhzeitT7syFdeR"},
+           %{"direction" => "Left", "hash" => "7FwFnyi4SmQr3yYz4mQ2LYA8DJjm3jxBBWpBj1zZfAAP"},
+           %{"direction" => "Right", "hash" => "BZf7GYFTVjohBtwn1DquTUkRQD7h14JXcNAuPRq7Zu28"}
+         ]
+       }
+     ],
+     "status" => %{
+       "Failure" => %{
+         "ActionError" => %{
+           "index" => 0,
+           "kind" => %{
+             "FunctionCallError" => %{
+               "CompilationError" => %{
+                 "CodeDoesNotExist" => %{"account_id" => "near_api.mintbot2.testnet"}
+               }
+             }
+           }
+         }
+       }
+     },
+     "transaction" => %{
+       "actions" => [
+         %{
+           "FunctionCall" => %{
+             "args" => "eyJtZXRhZGF0YSI6eyJjb3BpZXMiOjEsImRlc2NyaXB0aW9uIjoiTkZUIGZvciBtaW50Ym90Mi50ZXN0bmV0IGJ5IE1pbnRib3QiLCJtZWRpYSI6Imh0dHBzOi8vaXBmcy5pby9pcGZzL2JhZmtyZWlid3F0YWRuYzJzcDRkc2wya3pkNGp6YWw0ZHZ5ajVtbHpzMmFqc2c2ZG14bGt1djVhNjVlIiwidGl0bGUiOiJORlQgZm9yIG1pbnRib3QyLnRlc3RuZXQifSwicmVjZWl2ZXJfaWQiOiJtaW50Ym90Mi50ZXN0bmV0IiwidG9rZW5faWQiOiJ1bmlxdWVfaWQifQ==",
+             "deposit" => "0",
+             "gas" => 300000000000000,
+             "method_name" => "nft_mint"
+           }
+         }
+       ],
+       "hash" => "EgWFUZqPxairsGDais6vcpYLmqYC8GVXoN1k6RSrbqNy",
+       "nonce" => 85987035000002,
+       "public_key" => "ed25519:iyDKRpjoscGsm4xtWzsh6NcaS4ujm3MLGhDw8EjXDsk",
+       "receiver_id" => "near_api.mintbot2.testnet",
+       "signature" => "ed25519:2FZdUgNFWueTuTab8BvW3g5z9732SfndgRkXCn6PGm7EnPpk1XQ6DxzoW8Lm4N4WQH2KgQiGWxpjytJGQ78LkGCb",
+       "signer_id" => "mintbot2.testnet"
+     },
+     "transaction_outcome" => %{
+       "block_hash" => "CW7NYKBFB2uHqGcHkVGteNVqcQtiVxiHN985oYYpqWCU",
+       "id" => "EgWFUZqPxairsGDais6vcpYLmqYC8GVXoN1k6RSrbqNy",
+       "outcome" => %{
+         "executor_id" => "mintbot2.testnet",
+         "gas_burnt" => 2428517994378,
+         "logs" => [],
+         "metadata" => %{"gas_profile" => nil, "version" => 1},
+         "receipt_ids" => ["7agVUMmXPEqC9knL2AMQWHJnEEV9XZT7KGVS1jjtdjTL"],
+         "status" => %{"SuccessReceiptId" => "7agVUMmXPEqC9knL2AMQWHJnEEV9XZT7KGVS1jjtdjTL"},
+         "tokens_burnt" => "242851799437800000000"
+       },
+       "proof" => [
+         %{"direction" => "Right", "hash" => "98Cgj8QwKLXmTqfVt5MZ64xukoYvzNLkqYnkk4hiqojk"},
+         %{"direction" => "Right", "hash" => "C1k6pVVmvqPRfcgNufzAM3pfUgNQQzyZ6LFohSA3UJN4"},
+         %{"direction" => "Right", "hash" => "DhjNHNYiw5m5dZX3UaP4vb5iScC1vPJurLS78xHzVgwe"}
+       ]
+     }
+   }
+ }}
+```
