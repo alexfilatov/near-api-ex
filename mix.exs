@@ -47,6 +47,7 @@ defmodule NearApi.MixProject do
       {:dialyxir, "~> 1.1", only: [:dev], runtime: false},
       {:ex_doc, ">= 0.0.0", only: :dev, runtime: false},
       {:exvcr, "~> 0.11", only: :test},
+      {:mock, "~> 0.3.0", only: :test},
       {:remixed_remix, ">= 0.0.0", only: :dev}
     ]
   end
