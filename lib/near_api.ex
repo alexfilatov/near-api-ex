@@ -28,7 +28,7 @@ defmodule NearApi do
 
   # Block
   defdelegate block(block_id \\ nil, finality \\ "final"), to: NearApi.RPC.Block
-  defdelegate changes_in_block(block_id \\ nil, finality \\ "final"), to: NearApi.RPC.Block
+  defdelegate changes_in_block_experimental(block_id \\ nil, finality \\ "final"), to: NearApi.RPC.Block
 
   # Chunk
   defdelegate chunk(chunk_id \\ nil, block_id \\ nil, shard_id \\ nil), to: NearApi.RPC.Chunk
