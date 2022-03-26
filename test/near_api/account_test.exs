@@ -32,7 +32,7 @@ defmodule NearApi.AccountTest do
 
   describe ".send_money" do
     test "success: returns details of the transaction", %{from_account: from_account} do
-      with_mock NearApi.RPC.AccessKeys, view_access_key: fn _, _, _ -> access_key_response end do
+      with_mock NearApi.RPC.AccessKeys, view_access_key: fn _, _, _ -> access_key_response() end do
         use_cassette "send_money/success" do
           amount = NearApi.Helpers.Monetary.near_to_yocto(2)
           {:ok, result} = API.send_money(from_account, "yellowpie.testnet", amount)
