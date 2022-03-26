@@ -22,7 +22,8 @@ defmodule NearApi.Account do
     `receiver_id` - string value of the Near account ID, e.g. helloworld.testnet
     `amount` - as String because in Yocto
   """
-  @spec send_money(from_account :: NearApi.Account.t(), receiver_id :: String.t(), amount :: String.t()) :: nil
+  @spec send_money(from_account :: NearApi.Account.t(), receiver_id :: String.t(), amount :: String.t()) ::
+          {:ok, body :: map} | NearApi.RPC.Errors.t()
   def send_money(from_account, receiver_id, amount) do
     actions = [%NearApi.Actions.Transfer{deposit: amount}]
     {:ok, tx} = NearApi.Transaction.create_transaction(from_account, receiver_id, actions)
