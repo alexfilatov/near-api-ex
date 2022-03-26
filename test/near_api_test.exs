@@ -26,7 +26,7 @@ defmodule NearApiTest do
 
     test "Block: module contains delegated functions", %{functions: functions} do
       refute functions -- [block: 2] == functions
-      refute functions -- [changes_in_block: 2] == functions
+      refute functions -- [changes_in_block_experimental: 2] == functions
     end
 
     test "Chunk: module contains delegated functions", %{functions: functions} do
@@ -46,6 +46,11 @@ defmodule NearApiTest do
     test "Protocol: module contains delegated functions", %{functions: functions} do
       refute functions -- [genesis_config: 0] == functions
       refute functions -- [protocol_config: 1] == functions
+    end
+
+    test "Transactions: module contains delegated functions", %{functions: functions} do
+      refute functions -- [send_transaction_commit: 1] == functions
+      refute functions -- [send_transaction_async: 1] == functions
     end
   end
 end

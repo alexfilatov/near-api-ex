@@ -44,4 +44,8 @@ defmodule NearApi do
   # Protocol
   defdelegate genesis_config(), to: NearApi.RPC.Protocol
   defdelegate protocol_config(block_id \\ nil), to: NearApi.RPC.Protocol
+
+  # Transactions
+  defdelegate send_transaction_async(tx), to: NearApi.RPC.Transactions
+  defdelegate send_transaction_commit(tx), to: NearApi.RPC.Transactions
 end
