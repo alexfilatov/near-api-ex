@@ -1,0 +1,267 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.RPC.Protocol
+
+## Setup
+
+```elixir
+System.put_env("NEAR_NODE_URL", "https://rpc.mainnet.near.org")
+```
+
+```output
+:ok
+```
+
+## NearApi.RPC.Protocol.genesis_config/0
+
+Returns current genesis configuration.
+
+```elixir
+{:ok, result} = NearApi.RPC.Protocol.genesis_config()
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "avg_hidden_validator_seats_per_shard" => [0],
+     "block_producer_kickout_threshold" => 90,
+     "chain_id" => "mainnet",
+     "chunk_producer_kickout_threshold" => 90,
+     "dynamic_resharding" => false,
+     "epoch_length" => 43200,
+     "fishermen_threshold" => "340282366920938463463374607431768211455",
+     "gas_limit" => 1000000000000000,
+     "gas_price_adjustment_rate" => [1, 100],
+     "genesis_height" => 9820210,
+     "genesis_time" => "2020-07-21T16:55:51.591948Z",
+     "max_gas_price" => "10000000000000000000000",
+     "max_inflation_rate" => [0, 1],
+     "min_gas_price" => "1000000000",
+     "minimum_stake_divisor" => 10,
+     "minimum_stake_ratio" => [1, 6250],
+     "num_block_producer_seats" => 100,
+     "num_block_producer_seats_per_shard" => 'd',
+     "num_blocks_per_year" => 31536000,
+     "online_max_threshold" => 'cd',
+     "online_min_threshold" => 'Zd',
+     "protocol_reward_rate" => [0, 1],
+     "protocol_treasury_account" => "treasury.near",
+     "protocol_upgrade_num_epochs" => 2,
+     "protocol_upgrade_stake_threshold" => [4, 5],
+     "protocol_version" => 29,
+     "shard_layout" => %{"V0" => %{"num_shards" => 1, "version" => 0}},
+     "simple_nightshade_shard_layout" => %{
+       "V1" => %{
+         "boundary_accounts" => ["aurora", "aurora-0", "kkuuue2akv_1630967379.near"],
+         "fixed_shards" => [],
+         "shards_split_map" => [[0, 1, 2, 3]],
+         "to_parent_shard_map" => [0, 0, 0, 0],
+         "version" => 1
+       }
+     },
+     "total_supply" => "999999999792372916156395166000000",
+     "transaction_validity_period" => 86400,
+     "validators" => [
+       %{
+         "account_id" => "nfvalidator1.near",
+         "amount" => "50000000000000000000000000000",
+         "public_key" => "ed25519:14pWWRutZtGFKX4B8q89KVFaUWY1Cqu1JcqYXhCDeFh1"
+       },
+       %{
+         "account_id" => "nfvalidator2.near",
+         "amount" => "50000000000000000000000000000",
+         "public_key" => "ed25519:BwZk4bkYJxo79P2vSRw2uk1nfiqEfVkHvr5p8eVsqASC"
+       },
+       %{
+         "account_id" => "nfvalidator3.near",
+         "amount" => "50000000000000000000000000000",
+         "public_key" => "ed25519:DMz11tmPvhdqpi7CzP2JULeeSE8SxYRD8pys5nKke4FS"
+       },
+       %{
+         "account_id" => "nfvalidator4.near",
+         "amount" => "50000000000000000000000000000",
+         "public_key" => "ed25519:Fi3CQDHJoviKazVR27YmfFzWcFnvmoPBKEDd9ouq5Tjx"
+       }
+     ]
+   }
+ }}
+```
+
+## NearApi.RPC.Protocol.protocol_config/2
+
+Returns most recent protocol configuration or a specific queried block.
+  Useful for finding current storage and transaction costs.
+
+```elixir
+block_hash = "7RVS6t2sdmyAbqM9B9dqxbJiAst24YjaV2fU9Cx2zBsa"
+{:ok, body} = NearApi.RPC.Protocol.protocol_config(block_hash)
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "avg_hidden_validator_seats_per_shard" => [0, 0, 0, 0],
+     "block_producer_kickout_threshold" => 90,
+     "chain_id" => "mainnet",
+     "chunk_producer_kickout_threshold" => 90,
+     "dynamic_resharding" => false,
+     "epoch_length" => 43200,
+     "fishermen_threshold" => "340282366920938463463374607431768211455",
+     "gas_limit" => 1000000000000000,
+     "gas_price_adjustment_rate" => [1, 100],
+     "genesis_height" => 9820210,
+     "genesis_time" => "2020-07-21T16:55:51.591948Z",
+     "max_gas_price" => "10000000000000000000000",
+     "max_inflation_rate" => [0, 1],
+     "min_gas_price" => "1000000000",
+     "minimum_stake_divisor" => 10,
+     "num_block_producer_seats" => 100,
+     "num_block_producer_seats_per_shard" => 'dddd',
+     "num_blocks_per_year" => 31536000,
+     "online_max_threshold" => 'cd',
+     "online_min_threshold" => 'Zd',
+     "protocol_reward_rate" => [0, 1],
+     "protocol_treasury_account" => "treasury.near",
+     "protocol_upgrade_stake_threshold" => [4, 5],
+     "protocol_version" => 52,
+     "runtime_config" => %{
+       "account_creation_config" => %{
+         "min_allowed_top_level_account_length" => 32,
+         "registrar_account_id" => "registrar"
+       },
+       "storage_amount_per_byte" => "10000000000000000000",
+       "transaction_costs" => %{
+         "action_creation_config" => %{
+           "add_key_cost" => %{
+             "full_access_cost" => %{
+               "execution" => 101765125000,
+               "send_not_sir" => 101765125000,
+               "send_sir" => 101765125000
+             },
+             "function_call_cost" => %{
+               "execution" => 102217625000,
+               "send_not_sir" => 102217625000,
+               "send_sir" => 102217625000
+             },
+             "function_call_cost_per_byte" => %{
+               "execution" => 1925331,
+               "send_not_sir" => 1925331,
+               "send_sir" => 1925331
+             }
+           },
+           "create_account_cost" => %{
+             "execution" => 99607375000,
+             "send_not_sir" => 99607375000,
+             "send_sir" => 99607375000
+           },
+           "delete_account_cost" => %{
+             "execution" => 147489000000,
+             "send_not_sir" => 147489000000,
+             "send_sir" => 147489000000
+           },
+           "delete_key_cost" => %{
+             "execution" => 94946625000,
+             "send_not_sir" => 94946625000,
+             "send_sir" => 94946625000
+           },
+           "deploy_contract_cost" => %{
+             "execution" => 184765750000,
+             "send_not_sir" => 184765750000,
+             "send_sir" => 184765750000
+           },
+           "deploy_contract_cost_per_byte" => %{
+             "execution" => 6812999,
+             "send_not_sir" => 6812999,
+             "send_sir" => 6812999
+           },
+           "function_call_cost" => %{
+             "execution" => 2319861500000,
+             "send_not_sir" => 2319861500000,
+             "send_sir" => 2319861500000
+           },
+           "function_call_cost_per_byte" => %{
+             "execution" => 2235934,
+             "send_not_sir" => 2235934,
+             "send_sir" => 2235934
+           },
+           "stake_cost" => %{
+             "execution" => 102217625000,
+             "send_not_sir" => 141715687500,
+             "send_sir" => 141715687500
+           },
+           "transfer_cost" => %{
+             "execution" => 115123062500,
+             "send_not_sir" => 115123062500,
+             "send_sir" => 115123062500
+           }
+         },
+         "action_receipt_creation_config" => %{
+           "execution" => 108059500000,
+           "send_not_sir" => 108059500000,
+           "send_sir" => 108059500000
+         },
+         "burnt_gas_reward" => [3, 10],
+         "data_receipt_creation_config" => %{
+           "base_cost" => %{
+             "execution" => 36486732312,
+             "send_not_sir" => 36486732312,
+             "send_sir" => 36486732312
+           },
+           "cost_per_byte" => %{
+             "execution" => 17212011,
+             "send_not_sir" => 17212011,
+             "send_sir" => 17212011
+           }
+         },
+         "pessimistic_gas_price_inflation_ratio" => 'gd',
+         "storage_usage_config" => %{"num_bytes_account" => 100, "num_extra_bytes_record" => 40}
+       },
+       "wasm_config" => %{
+         "ext_costs" => %{
+           "storage_iter_create_to_byte" => 0,
+           "storage_read_key_byte" => 30952533,
+           "storage_remove_base" => 53473030500,
+           "write_register_base" => 2865522486,
+           "storage_read_base" => 56356845750,
+           "write_register_byte" => 3801564,
+           "sha256_byte" => 24117351,
+           "keccak256_byte" => 21471105,
+           "ripemd160_block" => 680107584,
+           "promise_return" => 560152386,
+           "storage_write_key_byte" => 70482867,
+           "utf8_decoding_base" => 3111779061,
+           "storage_write_evicted_byte" => 32117307,
+           "write_memory_base" => 2803794861,
+           "storage_iter_next_value_byte" => 0,
+           ...
+         },
+         "grow_mem_cost" => 1,
+         "limit_config" => %{
+           "initial_memory_pages" => 1024,
+           "max_actions_per_receipt" => 100,
+           "max_arguments_length" => 4194304,
+           "max_contract_size" => 4194304,
+           "max_functions_number_per_contract" => 10000,
+           "max_gas_burnt" => 300000000000000,
+           "max_length_method_name" => 256,
+           "max_length_returned_data" => 4194304,
+           "max_length_storage_key" => 4194304,
+           "max_length_storage_value" => 4194304,
+           "max_memory_pages" => 2048,
+           "max_number_bytes_method_names" => 2000,
+           "max_number_input_data_dependencies" => 128,
+           ...
+         },
+         "regular_op_cost" => 822756
+       }
+     },
+     "transaction_validity_period" => 86400
+   }
+ }}
+```

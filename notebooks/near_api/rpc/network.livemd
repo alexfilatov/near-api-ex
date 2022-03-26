@@ -1,0 +1,484 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.RPC.Network
+
+## Setup
+
+```elixir
+System.put_env("NEAR_NODE_URL", "https://rpc.mainnet.near.org")
+```
+
+```output
+:ok
+```
+
+## NearApi.RPC.Network.status/0
+
+Returns general status of a given node (sync status, nearcore node version, protocol version, etc), and the current set of validators.
+
+```elixir
+{:ok, result} = NearApi.RPC.Network.status()
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "chain_id" => "mainnet",
+     "latest_protocol_version" => 52,
+     "protocol_version" => 52,
+     "rpc_addr" => "0.0.0.0:4040",
+     "sync_info" => %{
+       "earliest_block_hash" => "4Kv8HKGkbkekwHA5StD7gNFifvRi6g43x8ox4VCHr545",
+       "earliest_block_height" => 61990319,
+       "earliest_block_time" => "2022-03-23T09:02:18.304724449Z",
+       "latest_block_hash" => "FrV1CExUfcAEWFqBmHx64LbxwiL4a1wChKrKRDheq8dA",
+       "latest_block_height" => 62203642,
+       "latest_block_time" => "2022-03-26T12:34:22.004230630Z",
+       "latest_state_root" => "2eWkmy3dzb7ZwsQgtgLcqd9fmmshtpvq7bHghoKGWicu",
+       "syncing" => false
+     },
+     "validator_account_id" => nil,
+     "validators" => [
+       %{"account_id" => "staked.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "bzam6yjpnfnxsdmjf6pw.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "astro-stakers.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "bisontrails.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "aurora.pool.near", "is_slashed" => false},
+       %{"account_id" => "dragonfly.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "foundry.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "finoa.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "blockdaemon.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "epic.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "magic.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "rekt.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "zavodil.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "electric.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "d1.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "nearcrowd.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "anonymous.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "dokiacapital.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "chorusone.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "08investinwomen_runbybisontrails.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "continue.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "legends.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "binancenode1.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "accomplice.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "future_is_near.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "abl_pool.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "hb436_pool.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "openshards.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "figment.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "ideocolabventures.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "northernlights.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "buildlinks.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "nc2.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "stakin.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "smart-stake.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "erm.poolv1.near", "is_slashed" => false},
+       %{"account_id" => "nearfans.poolv1.near", ...},
+       %{...},
+       ...
+     ],
+     "version" => %{"build" => "crates-0.12.0-31-g9b3d6ba55", "version" => "1.25.0"}
+   }
+ }}
+```
+
+## NearApi.RPC.Network.network_info/0
+
+Returns most recent protocol configuration or a specific queried block.
+  Useful for finding current storage and transaction costs.
+
+```elixir
+{:ok, result} = NearApi.RPC.Network.network_info()
+```
+
+```output
+{:ok,
+ %{
+   "id" => "dontcare",
+   "jsonrpc" => "2.0",
+   "result" => %{
+     "active_peers" => [
+       %{
+         "account_id" => nil,
+         "addr" => "108.60.71.205:24567",
+         "id" => "ed25519:FZHActTwnoJUYw6Hs7eUk3Ygvo8NM4GoZFh4ssMe5jkq"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "34.102.8.89:24567",
+         "id" => "ed25519:HeaZcu7cGf4ohYUE1sCUECcwYXYVu9VfJzxWr9rxn85L"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "34.247.165.151:24567",
+         "id" => "ed25519:Cvz5euQ5wu2z9yaoF2RK45UzVjV39ztTX9F6B4dBT5jp"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "51.195.234.239:24567",
+         "id" => "ed25519:CQt9MqMQPhgkjYZWP7DK4t2VyUeC1TpJpCmSRcvMoFMK"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "85.10.200.136:24567",
+         "id" => "ed25519:7gtwxkU1iersMmzU8qhatwRCH4DsSPBJQSVHVN3vt1Bx"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "35.199.32.112:24567",
+         "id" => "ed25519:37fF6qtAURAzDhfjHZ34eJcNTyJYs25b6VbA4ABkKgnN"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "3.213.8.33:24567",
+         "id" => "ed25519:BwNs59KvvXjHPQKovdHK4k74vcJ4bdiw8AytZj8g3Z5N"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "44.226.195.207:24567",
+         "id" => "ed25519:Gz76mL1D77d1nDZQi1jZM6WwdH8QEAHt3sor2khaFQLs"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "35.235.116.89:24567",
+         "id" => "ed25519:AVb5iedAHRBgGzJR2DYkukK7cUed8HFuGkZ9VD8sqKiy"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "34.91.252.80:24567",
+         "id" => "ed25519:2JQydJR9pzdzaxPLgfGpMXioP8q7jEBv5zJLFa88bmU1"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "34.94.171.29:24567",
+         "id" => "ed25519:GGaZ7vfaPXqCLbuLXCJzhqaoRu9yJRarCYYVdV31No88"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "3.127.174.29:24567",
+         "id" => "ed25519:28KcWsmSXgi7ZFurFvt6mX4HBDsLdShC3Z3W1mn8prns"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "54.204.157.240:24567",
+         "id" => "ed25519:3uZ9X1hnbyeSkbGbJW8LHvTnMvGntqLWEj2XdULZBmNP"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "95.217.84.35:24567",
+         "id" => "ed25519:7PCiBAAJaMCYSV1er8fJy2eET1n6rzug1QTockxRQAwt"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "34.81.7.177:24567",
+         "id" => "ed25519:F5LNCnE5nGEfNMtujNYvQGBHwPGRrsMwzQe38aGzweke"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "91.207.102.230:24567",
+         "id" => "ed25519:Bjy4baS4MQM7FEQS4YS73boS4hJ6sdEgrfZCjqS5SXoo"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "161.97.76.148:24567",
+         "id" => "ed25519:9YMv4RhR8iXxMRfR5xCBMNmk8uu3LxzmxR4hyFYmBN5b"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "13.230.47.132:24567",
+         "id" => "ed25519:DApC1qJBVkEpJmVvsEnMB97hWuDoBmhQYkZkvHhDRRQn"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "99.79.161.168:24567",
+         "id" => "ed25519:5pRiNCHbXFALoVqHJtqvUdJadT85r6L3GVSnyUeS3GJX"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "15.222.35.217:24567",
+         "id" => "ed25519:HW7n6SjNALQ7st7SFSeFRbU54fw8XHKm46SefmeBoqCJ"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "165.227.39.82:24567",
+         "id" => "ed25519:FqrLvV1Cm7wdWLyBv5tZCe5z6ee6mjqpuvZp7GhWrxJU"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "3.140.200.152:24567",
+         "id" => "ed25519:Ep2Lw1Paao6K8SQjRgQ4bXMQdY5csF3jedn3Czb9VZ5"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "34.86.95.171:24567",
+         "id" => "ed25519:AsvyHT93DuMDpygwZ2B6832ozmSg1UUDPQa1Wv37U9mY"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "3.213.8.33:24567",
+         "id" => "ed25519:FzqNfRDFTMBoQw9FGSJkgsqDDawcxHoLY73zmBi2oGgp"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "35.221.176.160:24567",
+         "id" => "ed25519:FBp1swXbkdtB7ifcZLHTKF18bPJsoydCAm5pjABaL7D7"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "193.35.56.237:24567",
+         "id" => "ed25519:FMpCaPKfhAjMAdvRVUmSyEpaAYjAN14SCyTw7tShqVyE"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "116.202.216.175:24567",
+         "id" => "ed25519:Ako2gQod3yKhg3E2kT8ksLX1v2jxNfYTUaujBt7MwYGQ"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "35.204.46.146:24567",
+         "id" => "ed25519:J1tsQs5CFgAanis99WBCqddBBg3XHMcnWAaHACYVY1or"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "143.198.16.242:24567",
+         "id" => "ed25519:EQQmGHFVAdW9uJykgTHRbqGZLLG17RvoyoQWtodQ7RY2"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "185.144.83.152:24567",
+         "id" => "ed25519:F15uAUEfqB2oEpDDJ5ypF8NpGSmtwsK7k5aHehMnGS5H"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "15.188.217.144:24567",
+         "id" => "ed25519:73nvYngVY8Fu7KGf8Sb2RyYprJeEdUAwCdQYXkQijY5d"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "78.47.224.232:24567",
+         "id" => "ed25519:HWWaejPDkxwF1D594ZzAVPn8o8HfdFXaHde24jvwqx4J"
+       },
+       %{
+         "account_id" => nil,
+         "addr" => "3.233.194.125:24567",
+         "id" => "ed25519:HGrFqanFP7NRBpb6Dw9L5DF4tPE89TEXZ7QxhgbEPFCS"
+       }
+     ],
+     "known_producers" => [
+       %{
+         "account_id" => "republic.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:C1tyDW2eJJRZwytxDs6zC7FMPWZeBHabvjew2eZwavjo"
+       },
+       %{
+         "account_id" => "grassets.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:EJexoHcejVWzimZZ7KR4cKhf37Uz6XNGRocsneAhDMU6"
+       },
+       %{
+         "account_id" => "tottenham_hotspur.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:GG2yZ6QyxRn6mnp5BgkiHaS8jPApK2gSNfcRVY9i8UzP"
+       },
+       %{
+         "account_id" => "future_is_near.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:31TMqceMdT1LSUAsmJbXJwnzQMvmM9LeUpJw9QMJk8xA"
+       },
+       %{
+         "account_id" => "finoa.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:BqVtHqHkivBJqCnfUGpPjBFGjCfyWQfxC3K4ojdxDh17"
+       },
+       %{
+         "account_id" => "foundry.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:8q6P3DvzRMQeXBRr2TTRyEbGFScnF6DYb6CfRFusgbuZ"
+       },
+       %{
+         "account_id" => "fresh.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:5o8sX1MYjkWHpLNEW6j8mQjxDu9rJw68eCjUQcQddVLm"
+       },
+       %{
+         "account_id" => "sparkpool.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:83C8GonqG3PKkdt7gfexnU592aKGs3BfZhgeA8CSBJcS"
+       },
+       %{
+         "account_id" => "openshards.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:H62grQCpzfiB145i7u4CMn8ayx6gpGbHr75NykcmoWs1"
+       },
+       %{
+         "account_id" => "legends.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:71pkXGFQ3Rxw64GdH2fo6ssk9Js9EcoT6SYgGpYsJcbr"
+       },
+       %{
+         "account_id" => "anonymous.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:42oqEsAhhgVSRDF9G2sP9FrNpUMYDStFXcYBoGzxHNMy"
+       },
+       %{
+         "account_id" => "fish.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:QvPjf67yZ8w2WySej2U1LgAxdSz6LdN96GkW6j55kwZ"
+       },
+       %{
+         "account_id" => "zkv_staketosupportprivacy.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:4Jfxjj7kmd5K6BgXFRpLBMdRajYhC73xeuTeQ3Cgr1sW"
+       },
+       %{
+         "account_id" => "astro-stakers.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:FrbiAcqoV4ZrGXaSgf2faXgT6BSa3jRG1NWYvns8Kyho"
+       },
+       %{
+         "account_id" => "lunanova.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:8waJfKqzU8P4w7rnzop3cRo6uM1u5vRrPPhN3MEn212j"
+       },
+       %{
+         "account_id" => "vortex_live.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:D3o7BwYRY4UgWe9RcJXRAgCDYRcHLWkR77qEm3LWyjJi"
+       },
+       %{
+         "account_id" => "ledgerbyfigment.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:DbhYaAsuKsfgHwC6nmKxQ5tMaGgBxkkbynbsTKHQx5c"
+       },
+       %{
+         "account_id" => "figment.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:J5Ls6pUiMZMc7VvZY7EZ2wRAyZdjfy1xqP7zZGtBvoKq"
+       },
+       %{
+         "account_id" => "near-fans.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:7Czfp1VuduayzhYr5mpbrxtgtaqB6CYWeTTunAbBwL8a"
+       },
+       %{
+         "account_id" => "d1.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:D6U7ruGbBeoRu4NFTjyMA6vhYoEkHfFdM2MMWrkiwxWU"
+       },
+       %{
+         "account_id" => "bflame.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:DqbNjrDjpr5jFvzA2SebAyGQTS1DUJULZmfhzXygfL6H"
+       },
+       %{
+         "account_id" => "jazza.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:J5hTXUMkk4zEi6wK1jtN1XeMak9oxwkme3cW5K6ZnFQs"
+       },
+       %{
+         "account_id" => "sharpdarts.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:FTxBpjgqazSoPf8cx6WNd9Cnth6eqUpBbwdKhBzYwZVM"
+       },
+       %{
+         "account_id" => "galaxydigital.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:BVSC4oqVpa2KFhwWdiMt64ZAcizQBW23MN6RN3v56SQX"
+       },
+       %{
+         "account_id" => "pathrocknetwork.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:A7mVYCR1DEeS84Vy8gtMdryPzTtUCtEwkJ5Hk6adoqg6"
+       },
+       %{
+         "account_id" => "appload.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:8hmTkSTnfZ8D3BLmr2zAXZyxrUnZwhXbp8XwpJPh1eaA"
+       },
+       %{
+         "account_id" => "steak.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:4D8Udo88RMJUwgdPcf2VjPXvAyLQn12Q18TqLBhtqPra"
+       },
+       %{
+         "account_id" => "4ire.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:5A1VMwmY9JBayxd2RocuD8mw3cib5e3JqctgEWUVFHkT"
+       },
+       %{
+         "account_id" => "cryptoblossom.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:Dzag6h9RkB6QUjzcAZFiSULWSbAra6c2gxwmru43dK3G"
+       },
+       %{
+         "account_id" => "baziliknear.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:6HBtiS73NrRUCrnKHLzParNBraGaT2NQRX5o51FYaVH9"
+       },
+       %{
+         "account_id" => "hb436_pool.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:BWcYjaGM7AQrAGK6KmaYEf84ViFBiHarF5qRCV6o5MdT"
+       },
+       %{
+         "account_id" => "dariya.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:3k4m5miQtfHZYid9rg2nioWTK8rdkSqcruCwsFm6FLH6"
+       },
+       %{
+         "account_id" => "sicmundus.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:AsGReU5fC9bj1mEnfDUcEWFm9gca7TjXVC3F2AoHNurE"
+       },
+       %{
+         "account_id" => "shardlabs.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:B7WczmEjs58xLwzspSfSbgHde3PbjTrm4me7VqhhTRss"
+       },
+       %{
+         "account_id" => "inotel.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:CKrqFy8Ma5qjnMasNhqURpx6M7qFFaTVLb5XVEWGzXMB"
+       },
+       %{
+         "account_id" => "zavodil.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:6ybckHHwkwxTynYkgTn8S9mUkP39KsC8jiNqGs8i96A8"
+       },
+       %{
+         "account_id" => "moonlet.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:DNpcdKvzabtHS9j43SpzBNXbqJtGFQrFcV4keNihnDgA"
+       },
+       %{
+         "account_id" => "ni.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:87rLDxFERcU2JFkfgvjteCjbb6F9vrBaNdYnByArPTUu"
+       },
+       %{
+         "account_id" => "continue.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:3yUZib8KMncy6aXCEtpWoAE5VBvU4AHtQ6WLvTHaWtCF"
+       },
+       %{
+         "account_id" => "stakely_io.poolv1.near",
+         "addr" => nil,
+         "peer_id" => "ed25519:36ErCQ5DGJF3oqW2dwRhKyrMGv6C2Yq46LQyNo862yBU"
+       },
+       %{"account_id" => "prophet.poolv1.near", "addr" => nil, ...},
+       %{"account_id" => "bisontrails.poolv1.near", ...},
+       %{...},
+       ...
+     ],
+     "num_active_peers" => 33,
+     "peer_max_count" => 40,
+     "received_bytes_per_sec" => 426900,
+     "sent_bytes_per_sec" => 397442
+   }
+ }}
+```

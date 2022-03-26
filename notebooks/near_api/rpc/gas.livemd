@@ -1,0 +1,42 @@
+<!-- livebook:{"persist_outputs":true} -->
+
+# NearApi.RPC.Gas
+
+## Setup
+
+```elixir
+System.put_env("NEAR_NODE_URL", "https://rpc.mainnet.near.org")
+```
+
+```output
+:ok
+```
+
+## NearApi.RPC.Gas.gas_price/1
+
+Returns gas price for a specific block_height or block_hash.
+
+Using no parameters will return the most recent block's gas price.
+
+<!-- livebook:{"break_markdown":true} -->
+
+### Latest gas price
+
+```elixir
+{:ok, result} = NearApi.RPC.Gas.gas_price()
+```
+
+```output
+{:ok, %{"id" => "dontcare", "jsonrpc" => "2.0", "result" => %{"gas_price" => "100000000"}}}
+```
+
+### Gas price for a specific block
+
+```elixir
+{:ok, %{"result" => %{"gas_price" => gas_price}}} =
+  NearApi.RPC.Gas.gas_price("7RVS6t2sdmyAbqM9B9dqxbJiAst24YjaV2fU9Cx2zBsa")
+```
+
+```output
+{:ok, %{"id" => "dontcare", "jsonrpc" => "2.0", "result" => %{"gas_price" => "100000000"}}}
+```
