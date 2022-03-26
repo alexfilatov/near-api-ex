@@ -18,7 +18,6 @@ production*
     -   [Protocol](#protocol)
     -   [Network](#network)
     -   [Transactions](#transactions)
-    -   [Sandbox (Backlog)](#sandbox-backlog)
     
 ## Installation
 
@@ -45,7 +44,7 @@ Retrieve information about an account's access keys.
 
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-keys">NEAR API Docs: Access Keys</a>
 
-[Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api_access_keys.livemd)
+[RPC.AccessKeys Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/access_keys.livemd)
 
 ### Accounts / Contracts
 
@@ -54,7 +53,8 @@ calls.
 
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts">NEAR API Docs: Accounts / Contracts</a>
 
-TBD: [Livebook](#)
+[RPC.Accounts Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/accounts.livemd),
+[RPC.Contracts Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/contracts.livemd)
 
 ### Block / Chunk 
 
@@ -62,7 +62,8 @@ Query the network and get details about specific blocks or chunks.
 
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chunk">NEAR API Docs: Block / Chunk</a>
 
-TBD: [Livebook](#)
+[RPC.Block Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/block.livemd),
+[RPC.Chunk Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/chunk.livemd)
 
 ### Gas  
 
@@ -70,7 +71,7 @@ Get gas price for a specific block or hash.
 
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR API Docs: Gas</a>
 
-TBD: [Livebook](#)
+[RPC.Gas Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/gas.livemd)
 
 ### Protocol
 
@@ -78,7 +79,7 @@ Retrieve current genesis and protocol configuration.
 
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol">NEAR API Docs: Protocol</a>
 
-TBD: [Livebook](#)
+[RPC.Protocol Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/protocol.livemd)
 
 ### Network
 
@@ -86,7 +87,7 @@ Return status information for nodes and validators.
 
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/network">NEAR API Docs: Network</a>
 
-TBD: [Livebook](#)
+[RPC.Network Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/network.livemd)
 
 ### Transactions
 
@@ -94,15 +95,7 @@ Send transactions and query their status.
 
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/transactions">NEAR API Docs: Transactions</a>
 
-TBD: [Livebook](#)
-
-### Sandbox (Backlog)
-
-Patch state on a local sandbox node.
-
-Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/sandbox">NEAR API Docs: Sandbox</a>
-
-TBD: [Livebook](#)
+[RPC.Transactions Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/transactions.livemd)
 
 
 ## Contributing
