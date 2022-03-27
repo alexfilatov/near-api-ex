@@ -51,7 +51,7 @@ defmodule NearApi.Helpers do
     """
     @spec near_to_yocto(near :: integer | float) :: integer
     def near_to_yocto(near) do
-      (near * :math.pow(10, 24)) |> round
+      near * :math.pow(10, 24)
     end
   end
 end
