@@ -89,6 +89,49 @@ params = %{
 📕[NearApi.Contract.call/4 Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/contract.livemd)
 
 
+### Login with NEAR
+
+This function generates a link that allows you to login with the NEAR protocol to your website.
+The procedure of loggin in with NEAR is about of granting access to your NEAR wallet to NEAR Smart Contract of your website.
+Technically, the procedure consists from 3 steps:
+1. Generate locally a key pair of public and secret keys
+2. Generate a link to NEAR wallet that adds new public key to the list of keys with _limited_ access to the NEAR Wallet
+3. Open the NERA Wallet by this link and Grant access by clicking `Confirm` button
+
+The function generates link for the `:mainnet`, `:testnet` and a custom wallet link.
+
+```elixir
+
+params = %{
+  contract_id: "nft_test10.mintbot.testnet",
+  success_url: "https://www.website.com/near/success.html",
+  failure_url: "https://www.website.com/near/failure.html"
+}
+
+{url, key_pair} = NearApi.Wallet.RequestSignin.build_url(params, :testnet)
+
+```
+Result will be:
+```elixir
+{"https://wallet.testnet.near.org/login?contract_id=nft_test10.mintbot.testnet&failure_url=https%3A%2F%2Fwww.website.com%2Fnear%2Ffailure.html&public_key=7HPgkkjUj5FDXUF5aD1Xuc5tXcDVL1RA4TyufYuaei3S&success_url=https%3A%2F%2Fwww.website.com%2Fnear%2Fsuccess.html",
+ %NearApi.KeyPair{
+   public_key: %NearApi.PublicKey{
+     data: <<93, 89, 16, 163, 44, 246, 170, 100, 163, 6, 123, 243, 32, 158, 119,
+       134, 76, 122, 84, 240, 111, 237, 43, 233, 200, 67, 29, 195, 112, 118,
+       251, 105>>,
+     key_type: 0
+   },
+   secret_key: "88yVfF7tS3weyDpRPQZiTj8BzuF3UaPXEgvtduaiN57b"
+ }}
+```
+
+
+`url` - the URL you need to pass the user to click
+
+`key_pair` - the KeyPair, that contains the public_key used in the URL and the private_key, both of these you need to persist to sign transactions you're going to run against the user NEAR Wallet
+
+
+
 ### NEAR API RPC Functions
 
 We used [Livebook](https://github.com/livebook-dev/livebook) for API documentation.
