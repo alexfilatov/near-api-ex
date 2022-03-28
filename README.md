@@ -6,18 +6,21 @@
 
 Elixir library for DApps development on the NEAR blockchain platform
 
-*Currently in active development, so not recommended to use in
-production*
+## TOC
 
--   [Installation](#installation)
--   [Usage](#usage)
-    -   [Access Keys](#access-keys)
-    -   [Accounts / Contracts](#accounts--contracts)
-    -   [Block / Chunk](#block--chunk)
-    -   [Gas](#gas)
-    -   [Protocol](#protocol)
-    -   [Network](#network)
-    -   [Transactions](#transactions)
+- [Installation](#installation)
+- [Usage](#usage)
+   - [Send Tokens](#send-tokens)
+   - [Call Smart Contract Function](#call-smart-contract-function)
+   - [Login with NEAR](#login-with-near)
+   - [NEAR API RPC Functions](#near-api-rpc-functions)
+     - [Access Keys](#access-keys)
+     - [Accounts / Contracts](#accounts--contracts)
+     - [Block / Chunk](#block--chunk)
+     - [Gas](#gas)
+     - [Protocol](#protocol)
+     - [Network](#network)
+     - [Transactions](#transactions)
     
 ## Installation
 
@@ -32,6 +35,19 @@ def deps do
   ]
 end
 ```
+
+### Configuration
+
+```elixir
+# config/config.exs
+
+# Optional configuration of the hackney timeout
+# Default value for :near_api is 50 seconds (hackney default value is 5 seconds)
+# In case we need to timeout earlier we can configure this here.
+config :near_api,
+  recv_timeout: 50_000,  
+  timeout: 50_000  
+``` 
 
 ## Usage
 
@@ -125,19 +141,17 @@ Result will be:
  }}
 ```
 
-
 `url` - the URL you need to pass the user to click
 
 `key_pair` - the KeyPair, that contains the public_key used in the URL and the private_key, both of these you need to persist to sign transactions you're going to run against the user NEAR Wallet
 
 
-
-### NEAR API RPC Functions
+## NEAR API RPC Functions
 
 We used [Livebook](https://github.com/livebook-dev/livebook) for API documentation.
 To see NEAR API in action please clone this repository and [run Livebook locally from your project folder](https://github.com/livebook-dev/livebook#escript) with corresponding `.livemd` file loaded. 
 
-#### Access Keys
+### Access Keys
 
 Retrieve information about an account's access keys.
 
@@ -145,7 +159,7 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/access-ke
 
 📕[RPC.AccessKeys Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/access_keys.livemd)
 
-#### Accounts / Contracts
+### Accounts / Contracts
 
 View details about accounts and contracts as well as perform contract
 calls.
@@ -155,7 +169,7 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/contracts
 📕[RPC.Accounts Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/accounts.livemd),
 📕[RPC.Contracts Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/contracts.livemd)
 
-#### Block / Chunk 
+### Block / Chunk 
 
 Query the network and get details about specific blocks or chunks.
 
@@ -164,7 +178,7 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/block-chu
 📕[RPC.Block Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/block.livemd),
 📕[RPC.Chunk Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/chunk.livemd)
 
-#### Gas  
+### Gas  
 
 Get gas price for a specific block or hash.
 
@@ -172,7 +186,7 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/gas">NEAR
 
 📕[RPC.Gas Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/gas.livemd)
 
-#### Protocol
+### Protocol
 
 Retrieve current genesis and protocol configuration.
 
@@ -180,7 +194,7 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/protocol"
 
 📕[RPC.Protocol Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/protocol.livemd)
 
-#### Network
+### Network
 
 Return status information for nodes and validators.
 
@@ -188,7 +202,7 @@ Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/network">
 
 📕[RPC.Network Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/network.livemd)
 
-#### Transactions
+### Transactions
 
 Send transactions and query their status.
 

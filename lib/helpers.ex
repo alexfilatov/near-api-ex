@@ -46,12 +46,22 @@ defmodule NearApi.Helpers do
   end
 
   defmodule Monetary do
+    require Integer
+
     @doc """
     Convert NEAR amount into Yocto amount
     """
     @spec near_to_yocto(near :: integer | float) :: integer
     def near_to_yocto(near) do
-      near * :math.pow(10, 24)
+      near * pow(10, 24)
+    end
+
+    def pow(_, 0), do: 1
+    def pow(x, n) when Integer.is_odd(n), do: x * pow(x, n - 1)
+
+    def pow(x, n) do
+      result = pow(x, div(n, 2))
+      result * result
     end
   end
 end
