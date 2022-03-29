@@ -1,8 +1,10 @@
 # NearApi 
 [![Build Status](https://github.com/alexfilatov/near_api/workflows/CI/badge.svg?branch=main)](https://github.com/alexfilatov/near_api/actions?query=workflow%3ACI) 
-[![Hex pm](https://img.shields.io/hexpm/v/near_api.svg?style=flat)](https://hex.pm/packages/near_api) 
+[![Hex pm](https://img.shields.io/hexpm/v/near_api.svg?style=flat)](https://hex.pm/packages/near_api)
+[![Hex docs](http://img.shields.io/badge/hex.pm-docs-green.svg)](https://hexdocs.pm/near_api)
 [![hex.pm downloads](https://img.shields.io/hexpm/dt/near_api.svg?style=flat)](https://hex.pm/packages/near_api)
 [![Project license](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Last Updated](https://img.shields.io/github/last-commit/alexfilatov/near_api.svg)](https://github.com/alexfilatov/near_api/commits/master)
 
 Elixir library for DApps development on the NEAR blockchain platform
 
@@ -209,7 +211,6 @@ Send transactions and query their status.
 Near Docs: <a target="_blank" href="https://docs.near.org/docs/api/rpc/transactions">NEAR API Docs: Transactions</a>
 
 📕[RPC.Transactions Livebook](https://github.com/alexfilatov/near_api/blob/main/notebooks/near_api/rpc/transactions.livemd)
-
 
 ## Contributing
 
