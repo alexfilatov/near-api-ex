@@ -65,4 +65,3 @@ jobs:
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: otp-${{matrix.otp}}-elixir-${{ matrix.elixir }}
-          parallel: true
