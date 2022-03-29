@@ -61,4 +61,4 @@ jobs:
         run: mix test --trace
 
       - name: Run Coveralls
-      - run: mix coveralls.github
+        run: mix coveralls.github
