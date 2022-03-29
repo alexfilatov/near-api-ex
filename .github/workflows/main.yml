@@ -62,7 +62,6 @@ jobs:
 
       - name: Coveralls GitHub Action
         uses: coverallsapp/github-action@1.1.3
-        run: mix coveralls.github
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: otp-${{matrix.otp}}-elixir-${{ matrix.elixir }}
